@@ -1,8 +1,12 @@
 import './App.css';
+import Layout from './components/Layout'
 
-function App() {
+function App({Component, pageProps}) {
   return (
     <div className="App">
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </div>
   );
 }
