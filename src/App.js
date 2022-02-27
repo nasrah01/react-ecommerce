@@ -1,12 +1,12 @@
 import './App.css';
-import Layout from './components/Layout'
+import Header from './components/Header';
+import Home from './pages/home'
 
-function App({Component, pageProps}) {
+function App() {
   return (
     <div className="App">
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Header />
+      <Home />
     </div>
   );
 }
