@@ -1,26 +1,11 @@
-import React, { useEffect, useState} from 'react'
+import React from 'react';
+import SliderApi from '../api/SliderApi';
 
 export const Home = () => {
 
-  const [result, setResult] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch(
-        "https://fakestoreapi.com/products?limit=4&sort=desc"
-      );
-
-      const data = await response.json();
-      setResult(data);
-    };
-    getData();
-  }, []);
-
-  console.log(result)
-
   return (
     <div>
-      <div>slider</div>
+      <SliderApi />
       <div>product feed</div>
     </div>
   )

@@ -1,19 +1,25 @@
-import React from 'react'
-import Search from './SearchBar'
-import { RiShoppingBagLine } from 'react-icons/ri'
+import Search from './SearchBar';
+import NavBar from './NavBar';
+import { RiShoppingBagLine } from 'react-icons/ri';
+import './header.css';
 
 const Header = () => {
   return (
-    <header>
-      <div>Logo</div>
-      <div>
-        <Search />
+    <div className="header">
+      <div className="header__primary">
+        <div>Logo</div>
+        <div>
+          <Search />
+        </div>
+        <div>
+          <div>Sign in</div>
+          <RiShoppingBagLine />
+        </div>
       </div>
-      <div>
-        <div>Sign in</div>
-        <RiShoppingBagLine />
+      <div className="header__secondary">
+        <NavBar />
       </div>
-    </header>
+    </div>
   );
 }
 
