@@ -19,7 +19,7 @@ export default function Sliderapi() {
 
   return(
     <div>
-      {slider.map(item => { return <img src={item.image} alt="product"/>})}
+      {slider.map(item => { return <img src={item.image} alt="product" width={200} height={200}/>})}
     </div>
   )
 
