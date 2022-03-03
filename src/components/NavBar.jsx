@@ -11,8 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
 
-
-const pages = ['Women', 'Lingerie', 'Men', 'Kids','Home', 'Beauty', 'Flowers', 'Gifts', 'Offers'];
+const pages = ['Women', 'Lingerie', 'Men', 'Kids','Home', 'Furniture', 'Beauty', 'Flowers', 'Gifts', 'Offers', 'Food & Wine', 'Inspire Me'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -26,7 +25,7 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ background: "#000" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -71,7 +70,7 @@ const NavBar = () => {
               display: {
                 xs: "none",
                 md: "flex",
-                justifyContent: "space-evenly",
+                justifyContent: "center",
               },
             }}
           >
@@ -79,7 +78,7 @@ const NavBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, mr: 2, ml: 2, color: "#fff", display: "block" }}
               >
                 {page}
               </Button>

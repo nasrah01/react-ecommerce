@@ -1,7 +1,6 @@
 import Search from './SearchBar';
 import NavBar from './NavBar';
 import { RiShoppingBagLine } from 'react-icons/ri';
-import './header.css';
 import Box from "@mui/material/Box";
 
 const Header = () => {
@@ -17,7 +16,10 @@ const Header = () => {
           borderRadius: 1,
         }}
       >
-        <div>Logo</div>
+        <div>
+          <h1>S&K</h1>
+          <p>EST. 1992</p>
+        </div>
         <div>
           <Search />
         </div>

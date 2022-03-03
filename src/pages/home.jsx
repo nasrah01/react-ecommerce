@@ -1,11 +1,11 @@
 import React from 'react';
-import SliderApi from '../api/SliderApi';
+import Slider from '../components/Slider';
 
 export const Home = () => {
 
   return (
     <div>
-      <SliderApi />
+      <Slider />
       <div>product feed</div>
     </div>
   )
