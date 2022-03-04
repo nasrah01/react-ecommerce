@@ -1,12 +1,13 @@
 import React from 'react';
 import Slider from '../components/Slider';
+import Products from "../components/Products";
 
 export const Home = () => {
 
   return (
     <div>
       <Slider />
-      <div>product feed</div>
+      <Products />
     </div>
   )
 }

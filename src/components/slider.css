@@ -1,3 +1,17 @@
 .slider__container {
   padding: 2rem;
 }
+
+.carousel .thumb img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.carousel .slide img {
+    max-height: 600px;  /* change this to whatever you want */
+    width: auto;
+}
+
+.images {
+  display: flex;
+}
