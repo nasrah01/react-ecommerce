@@ -5,9 +5,7 @@ export default function Clothes() {
 
   useEffect(() => {
     const sliderData = async () => {
-      const response = await fetch(
-        "https://fakestoreapi.com/products?limit=4&sort=desc"
-      );
+      const response = await fetch("https://fakestoreapi.com/products?limit=35");
 
       const data = await response.json();
       setSlider(data);
