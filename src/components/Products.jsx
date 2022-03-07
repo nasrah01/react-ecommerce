@@ -17,7 +17,7 @@ export default function Products() {
 
   return (
     <div>
-      <h2>Top Picks for Lingerie</h2>
+      <h2>Top Picks</h2>
       <div>
         {products.map((item) => {
           return (
