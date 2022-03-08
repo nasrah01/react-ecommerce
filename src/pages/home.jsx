@@ -1,13 +1,13 @@
 import React from 'react';
 import Slider from '../components/Slider';
-import Products from "../components/Products";
+import HomePicks from "../components/HomePicks";
 
 export const Home = () => {
 
   return (
     <div>
       <Slider />
-      <Products />
+      <HomePicks />
     </div>
   )
 }
