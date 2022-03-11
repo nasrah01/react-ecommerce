@@ -2,16 +2,3 @@
   padding: 2rem calc((100vw - 1400px) / 2);
 }
 
-.carousel .thumb img {
-    width: 100% !important;
-    height: 100% !important;
-}
-
-.carousel .slide img {
-    max-height: 500px;
-    width: auto;
-}
-
-.images {
-  display: flex;
-}
