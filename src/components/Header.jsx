@@ -1,33 +1,25 @@
 import Search from './SearchBar';
 import NavBar from './NavBar';
 import { RiShoppingBagLine } from 'react-icons/ri';
-import Box from "@mui/material/Box";
+
+import './header.css';
 
 const Header = () => {
   return (
     <div className="header">
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-around",
-          p: 1,
-          m: 1,
-          bgcolor: "background.paper",
-          borderRadius: 1,
-        }}
-      >
-        <div>
-          <h1>S&K</h1>
+      <div className="header__primary">
+        <div className="header__logo">
+          <h2>S&K</h2>
           <p>EST. 1992</p>
         </div>
         <div>
           <Search />
         </div>
-        <div>
+        <div className="header__cart">
           <div>Sign in</div>
           <RiShoppingBagLine />
         </div>
-      </Box>
+      </div>
         <div className="header__secondary">
           <NavBar />
         </div>

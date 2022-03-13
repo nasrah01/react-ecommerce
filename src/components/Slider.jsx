@@ -1,24 +1,24 @@
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import './slider.css'
-import {sliderData} from '../data/slider'
+import Carousel from "react-bootstrap/Carousel";
+import "bootstrap/dist/css/bootstrap.css";
+import "./slider.css";
+import { sliderData } from "../data/slider";
 
 export default function Sliderapi() {
-
   return (
     <div className="slider__container">
-      <Carousel autoPlay infiniteLoop showStatus={false} showThumbs={false} interval={4000}>
-          {
-            sliderData.map((item) => {
-              return (
-                <div className="images" key={item.id}>
-                  <img src={item.image} alt={item.alt} />
-                </div>
-              );
-            })
-          }
+      <Carousel fade>
+      {sliderData.map((item) => {
+        return (
+          <Carousel.Item key={item.id}>
+            <img className="slider__img" src={item.image} alt={item.alt} />
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        );
+      })}
       </Carousel>
     </div>
   );
-
 }

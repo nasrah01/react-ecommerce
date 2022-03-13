@@ -3,3 +3,8 @@
   height: 600px;
   width: 100%;
 }
+
+.homepage__mosaic img {
+  height: 300px;
+  width: 300px;
+}

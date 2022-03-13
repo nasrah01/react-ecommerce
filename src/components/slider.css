@@ -1,4 +1,10 @@
 .slider__container {
-  padding: 2rem calc((100vw - 1400px) / 2);
+  padding: 2rem calc((100vw - 1700px) / 2);
+}
+
+.slider__img {
+  max-height: 700px;
+  width: 100%;
+  object-fit: cover;
 }
 

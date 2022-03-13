@@ -9,7 +9,7 @@ const SearchBar = () => {
     <div>
       <Paper
         component="form"
-        sx={{ p: "2px 4px", display: "flex",  width: 400 }}
+        sx={{ p: "2px 4px", display: "flex", alignContent: 'center',  width: 450 }}
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
