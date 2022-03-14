@@ -9,12 +9,19 @@ const SearchBar = () => {
     <div>
       <Paper
         component="form"
-        sx={{ p: "2px 4px", display: "flex", alignContent: 'center',  width: 450 }}
+        sx={{
+          p: "2px 4px",
+          display: "flex",
+          alignContent: "center",
+          width: 450,
+        }}
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Search"
           inputProps={{ "aria-label": "search" }}
+          InputProps={{ style: { fontSize: 60 } }}
+          InputLabelProps={{ style: { fontSize: 40 } }}
         />
         <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
           <SearchIcon />

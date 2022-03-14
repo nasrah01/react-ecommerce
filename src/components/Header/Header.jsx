@@ -1,5 +1,5 @@
-import Search from './SearchBar';
-import NavBar from './NavBar';
+import Search from '../Navigation/SearchBar';
+import NavBar from '../Navigation/NavBar';
 import { RiShoppingBagLine } from 'react-icons/ri';
 
 import './header.css';
@@ -16,8 +16,8 @@ const Header = () => {
           <Search />
         </div>
         <div className="header__cart">
-          <div>Sign in</div>
-          <RiShoppingBagLine />
+          <p>Sign in</p>
+          <RiShoppingBagLine size={24}/>
         </div>
       </div>
         <div className="header__secondary">

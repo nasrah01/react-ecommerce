@@ -6,17 +6,24 @@
 }
 
 .header__logo h2 {
-  font-size: clamp(1rem, 10vw, 2rem); 
+  font-size: clamp(1rem, 5vw, 3rem);  
   font-weight: normal;
   margin: 0;
 }
 
 .header__logo p {
-  font-size: 1.8rem; 
+  font-size: clamp(10px, 1vh, 12px); 
   margin: 0;
+  text-align: center;
 }
 
 .header__cart {
   display: flex;
   align-items: center;
+}
+
+.header__cart p {
+  font-size: clamp(14px, 2vh, 18px);
+  margin: 0;
+  padding-right: .5rem;
 }

@@ -1,7 +1,7 @@
 import IMG1 from '../assets/image-54966.jpeg';
 import IMG3 from "../assets/image-23764.jpeg";
 import IMG4 from "../assets/image-54645.jpeg";
-import IMG5 from "../assets/image-45344.jpg";
+import IMG5 from "../assets/image-45344.jpeg";
 
 export const sliderData = [
   {
@@ -17,7 +17,7 @@ export const sliderData = [
   {
     id: 4,
     image: IMG4,
-    alt: "mothers day flowers",
+    alt: "flowers",
   },
   {
     id: 5,
