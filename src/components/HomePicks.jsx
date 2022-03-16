@@ -14,15 +14,16 @@ export default function Products() {
     TopPicks();
   }, []);
 
-  console.log(products[0]);
-
+  console.log(products)
   return (
-    <div>
-      <h2>Top Picks</h2>
+    <div className="top__picks">
+      <h2>Top Picks from us</h2>
       <div className="homepage__mosaic">
-        <div className="mosaic__right">
+        <div className="mosaic">
           {products.map((product) => (
-            <img src={product.image} alt={products.catagory} />
+            <div className="mosaic__img">
+            <img src={product.image} alt={products.catagory} key={product.id} />
+            </div>
           ))}
         </div>
       </div>

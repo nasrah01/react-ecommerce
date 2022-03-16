@@ -12,8 +12,8 @@ export default function Sliderapi() {
           <Carousel.Item key={item.id}>
             <img className="slider__img" src={item.image} alt={item.alt} />
             <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <h3>{item.title}</h3>
+              <a href='/'>{item.button}</a>
             </Carousel.Caption>
           </Carousel.Item>
         );

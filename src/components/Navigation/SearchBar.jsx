@@ -19,7 +19,6 @@ const SearchBar = () => {
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Search"
-          inputProps={{ "aria-label": "search" }}
           InputProps={{ style: { fontSize: 60 } }}
           InputLabelProps={{ style: { fontSize: 40 } }}
         />
