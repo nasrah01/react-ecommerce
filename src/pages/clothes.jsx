@@ -1,25 +1,24 @@
 import {useState, useEffect} from 'react'
+import Products from '../components/Products/Products';
 
 export default function Clothes() {
-  const [slider, setSlider] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const sliderData = async () => {
-      const response = await fetch("https://fakestoreapi.com/products?limit=35");
+    const data = async () => {
+      const response = await fetch("https://fakestoreapi.com/products?limit=20");
 
       const data = await response.json();
-      setSlider(data);
+      setProducts(data);
     };
-    sliderData();
+    data();
   }, []);
 
-  console.log(slider)
+  console.log(products)
 
   return(
-    <div>
-    <div>
-      {slider.map(item => { return <img src={item.image} alt="product" width={200} height={200}/>})}
-    </div>
+    <div className="department">
+      <Products products={products}/>
     </div>
   )
 }

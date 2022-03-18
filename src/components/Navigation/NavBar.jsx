@@ -33,7 +33,7 @@ const darkTheme = createTheme({
 });
 
 
-const pages = ['Women', 'Lingerie', 'Men', 'Kids','Home', 'Beauty', 'Flowers', 'Gifts', 'Offers', 'Food & Wine', 'Inspire Me'];
+const pages = ["Women", "Men", "Accessories", "Technology", "Inspire Me"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

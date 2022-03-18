@@ -1,1 +1,5 @@
-/* Global styles */
+/* page styles */
+
+.department {
+  min-height: 100vh;
+}

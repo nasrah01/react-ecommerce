@@ -1,7 +1,6 @@
 import React from 'react';
 import Slider from '../components/Slider';
 import HomePicks from "../components/HomePicks";
-import Product from '../components/Products/Product';
 
 export const Home = () => {
 
@@ -9,7 +8,6 @@ export const Home = () => {
     <div>
       <Slider />
       <HomePicks />
-      <Product />
     </div>
   )
 }
