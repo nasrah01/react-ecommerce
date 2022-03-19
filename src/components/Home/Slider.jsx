@@ -1,7 +1,7 @@
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.css";
 import "./slider.css";
-import { sliderData } from "../data/slider";
+import { sliderData } from "../../data/slider";
 
 export default function Sliderapi() {
   return (
@@ -12,8 +12,8 @@ export default function Sliderapi() {
           <Carousel.Item key={item.id}>
             <img className="slider__img" src={item.image} alt={item.alt} />
             <Carousel.Caption>
-              <h3>{item.title}</h3>
-              <a href='/'>{item.button}</a>
+              <h1 className="slider__caption">{item.title}</h1>
+              <p>{item.desc}</p>
             </Carousel.Caption>
           </Carousel.Item>
         );

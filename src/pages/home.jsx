@@ -1,6 +1,6 @@
 import React from 'react';
-import Slider from '../components/Slider';
-import HomePicks from "../components/HomePicks";
+import Slider from '../components/Home/Slider';
+import HomePicks from "../components/Home/HomePicks";
 
 export const Home = () => {
 

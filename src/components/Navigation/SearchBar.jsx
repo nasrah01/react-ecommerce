@@ -20,8 +20,6 @@ const SearchBar = () => {
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Search"
-          InputProps={{ style: { fontSize: 60 } }}
-          InputLabelProps={{ style: { fontSize: 40 } }}
           onChange={() => {}}
         />
         <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">

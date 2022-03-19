@@ -8,3 +8,6 @@
   object-fit: cover;
 }
 
+.slider__caption {
+  font-weight: 700;
+}
