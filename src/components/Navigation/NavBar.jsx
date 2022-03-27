@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,6 +11,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import {Link} from 'react-router-dom'
 
 const theme = createTheme();
 
@@ -32,11 +34,10 @@ const darkTheme = createTheme({
   },
 });
 
-
-const pages = ["Women", "Men", "Accessories", "Technology", "Inspire Me"];
+const pages = ["Women's clothing", "Men's clothing", "Jewelery", "electronics"];
 
 const NavBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -81,15 +82,15 @@ const NavBar = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Link to="/department" state={{page}} style={{ textDecoration: "none" }}><MenuItem key={page} onClick={handleCloseNavMenu}>
                     <ThemeProvider theme={theme}>
                       <Typography variant="h3" textAlign="center">
                         {page}
                       </Typography>
                     </ThemeProvider>
-                  </MenuItem>
+                  </MenuItem></Link>
                 ))}
-              </Menu>
+              </Menu> 
             </Box>
             <Box
               sx={{
@@ -102,7 +103,7 @@ const NavBar = () => {
               }}
             >
               {pages.map((page) => (
-                <Button
+                <Link to="/department" state={{page}} style={{ textDecoration: "none" }}><Button
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, mr: 2, ml: 2, color: "#fff", display: "block" }}
@@ -112,7 +113,7 @@ const NavBar = () => {
                       {page}
                     </Typography>
                   </ThemeProvider>
-                </Button>
+                </Button></Link>
               ))}
             </Box>
           </Toolbar>

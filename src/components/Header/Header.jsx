@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import './header.css';
-import { selectItems } from '../../reducers/cart';
+import { selectItems } from '../../redux/reducers/cart';
 
 const Header = () => {
 

@@ -8,16 +8,18 @@ import Typography from "@mui/material/Typography";
 import { IconButton } from "@mui/material";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import "./products.css";
-import { addToCart } from "../../reducers/cart";
+import { addToCart } from "../../redux/reducers/cart";
+import CurrencyFormat from "react-currency-format";
 
 const Product = ({ item }) => {
 
   const dispatch = useDispatch();
 
-  const {image, title, description, price} = item;
+  const {id, image, title, description, price} = item;
 
   const addItemToCart = () => {
     const product = {
+      id,
       image,
       title,
       description,
@@ -30,19 +32,14 @@ const Product = ({ item }) => {
   return (
     <div>
       <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          height="140"
-          image={image}
-          alt="apparel"
-        />
+        <CardMedia component="img" height="140" image={image} alt="apparel" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {description}
-            {price}
+            <CurrencyFormat value={price} prefix={'£'} displayType={'text'} />
           </Typography>
         </CardContent>
         <CardActions>
