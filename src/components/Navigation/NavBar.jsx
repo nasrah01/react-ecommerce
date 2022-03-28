@@ -82,7 +82,7 @@ const NavBar = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <Link to="/department" state={{page}} style={{ textDecoration: "none" }}><MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Link to="/department" state={{page}} style={{ textDecoration: "none" }} key={page}><MenuItem onClick={handleCloseNavMenu}>
                     <ThemeProvider theme={theme}>
                       <Typography variant="h3" textAlign="center">
                         {page}
@@ -103,8 +103,7 @@ const NavBar = () => {
               }}
             >
               {pages.map((page) => (
-                <Link to="/department" state={{page}} style={{ textDecoration: "none" }}><Button
-                  key={page}
+                <Link to="/department" state={{page}} style={{ textDecoration: "none" }} key={page}><Button
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, mr: 2, ml: 2, color: "#fff", display: "block" }}
                 >

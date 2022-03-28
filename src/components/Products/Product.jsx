@@ -32,13 +32,12 @@ const Product = ({ item }) => {
   return (
     <div>
       <Card sx={{ maxWidth: 345 }}>
-        <CardMedia component="img" height="140" image={image} alt="apparel" />
+        <CardMedia component="img" height="400" image={image} alt="apparel" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {description}
             <CurrencyFormat value={price} prefix={'£'} displayType={'text'} />
           </Typography>
         </CardContent>

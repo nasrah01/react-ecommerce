@@ -21,12 +21,8 @@ export default function Products() {
       <div className="homepage__mosaic">
         <div className="mosaic">
           {products.map((product) => (
-            <div className="mosaic__img">
-              <img
-                src={product.image}
-                alt={products.catagory}
-                key={product.id}
-              />
+            <div className="mosaic__img" key={product.id}>
+              <img src={product.image} alt={products.catagory} />
             </div>
           ))}
         </div>

@@ -1,14 +1,10 @@
 import {useState, useEffect} from 'react'
 import Products from '../components/Products/Products';
-import { useLocation } from 'react-router-dom';
 
 const Department = () => {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState(products);
   let componentMounted = true;
-
-  const location = useLocation();
-  const { page } = location.state;
 
   useEffect(() => {
 
@@ -20,9 +16,6 @@ const Department = () => {
       if(componentMounted) {
         setProducts(await response.clone().json());
         setFilter(await response.json());
-
-        console.log(filter);
-
       }
 
       return () => {
@@ -31,6 +24,9 @@ const Department = () => {
       }
     };
     data();
+
+    console.log(filter)
+    console.log(products)
 
   }, []);
 
