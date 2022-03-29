@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
-const SearchBar = () => {
+const SearchBar = ({products}) => {
+  const [filterSearch, setFilterSearch] = useState(products);
 
   return (
     <div>
@@ -20,7 +22,9 @@ const SearchBar = () => {
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Search"
-          onChange={() => {}}
+          onChange={e => {
+
+          }}
         />
         <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
           <SearchIcon />

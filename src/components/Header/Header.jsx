@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import './header.css';
 import { selectItems } from '../../redux/reducers/cart';
 
-const Header = () => {
+const Header = ({products}) => {
 
   const items = useSelector(selectItems);
 
@@ -22,7 +22,7 @@ const Header = () => {
         </div>
 
         <div>
-          <Search />
+          <Search products={products}/>
         </div>
         <div className="header__cart">
           <p>Sign in</p>

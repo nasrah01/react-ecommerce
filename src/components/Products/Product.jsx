@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -15,12 +16,13 @@ const Product = ({ item }) => {
 
   const dispatch = useDispatch();
 
-  const {id, image, title, description, price} = item;
+  const {id, image, category, title, description, price} = item;
 
   const addItemToCart = () => {
     const product = {
       id,
       image,
+      category,
       title,
       description,
       price,
@@ -29,16 +31,44 @@ const Product = ({ item }) => {
     dispatch(addToCart(product))
   }
 
+  const theme = createTheme({
+    components: {
+      MuiCardMedia: {
+        styleOverrides: {
+          root: {
+            objectFit: "scale-down",
+          },
+        },
+      },
+    },
+    typography: {
+      fontSize: 12,
+    },
+  });
+
+  function truncateString(string, limit) {
+    if (string.length > limit) {
+      return string.substring(0, limit) + "...";
+    } else {
+      return string;
+    }
+  }
+
   return (
     <div>
       <Card sx={{ maxWidth: 345 }}>
-        <CardMedia component="img" height="400" image={image} alt="apparel" />
+        <ThemeProvider theme={theme}>
+          <CardMedia component="img" height="240" image={image} alt="apparel" />
+        </ThemeProvider>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
+          <Typography gutterBottom variant="body2" color="text.secondary">
+            {category}
+          </Typography>
+          <Typography gutterBottom variant="body2" component="div">
+            {truncateString(title, 30)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <CurrencyFormat value={price} prefix={'£'} displayType={'text'} />
+            <CurrencyFormat value={price} prefix={"£"} displayType={"text"} />
           </Typography>
         </CardContent>
         <CardActions>
