@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import Home from "./pages/home";
 import Department from "./pages/department";
 import Checkout from "./pages/checkout";
+import SearchItems from './pages/search'
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -25,9 +26,10 @@ function App() {
       <BrowserRouter>
         <Header products={products} />
         <Routes>
-          <Route path="/" element={<Home products={products}/>} />
+          <Route path="/" element={<Home products={products} />} />
           <Route path="/department" element={<Department />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/search" element={<SearchItems />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -3,8 +3,6 @@ import Products from '../components/Products/Products';
 
 const Department = () => {
   const [products, setProducts] = useState([]);
-  const [filter, setFilter] = useState(products);
-  let componentMounted = true;
 
   useEffect(() => {
 
@@ -13,26 +11,16 @@ const Department = () => {
         `https://fakestoreapi.com/products`
       );
 
-      if(componentMounted) {
-        setProducts(await response.clone().json());
-        setFilter(await response.json());
-      }
-
-      return () => {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        componentMounted = false;
-      }
+        setProducts(await response.json());
+    
     };
     data();
 
-    console.log(filter)
-    console.log(products)
-
-  }, []);
+  }, [products]);
 
   return(
     <div className="department">
-      <Products products={filter}/>
+      <Products products={products}/>
     </div>
   )
 }

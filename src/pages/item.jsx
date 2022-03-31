@@ -1,1 +1,0 @@
-// inividual item information

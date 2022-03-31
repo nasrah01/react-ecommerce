@@ -1,11 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
+import { useDispatch } from 'react-redux';
+import { addProductsByFilter } from '../../redux/reducers/filterAction';
 
 const SearchBar = ({products}) => {
+
+  const dispatch = useDispatch();
+
   const [filterSearch, setFilterSearch] = useState(products);
+
+  useEffect(() => {
+    setFilterSearch(products)
+  }, [products]);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addProductsByFilter(filterSearch));
+  };
 
   return (
     <div>
@@ -17,17 +31,21 @@ const SearchBar = ({products}) => {
           alignContent: "center",
           width: 450,
         }}
-        onSubmit={() => {}}
+        onSubmit={handleFormSubmit}
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Search"
-          onChange={e => {
+          onChange={(e) => {
+            let search = products.filter((product) =>
+              product.title.toLowerCase().includes(e.target.value.toLowerCase())
+            );
 
+            setFilterSearch(search);
           }}
         />
         <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
-          <SearchIcon />
+          <SearchIcon onSubmit={() => {}} />
         </IconButton>
       </Paper>
     </div>
