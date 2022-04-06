@@ -10,10 +10,14 @@ import SearchItems from './pages/search'
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState([]);
+  console.log(products)
 
   useEffect(() => {
     const TopPicks = async () => {
-      const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch(
+        "https://fakestoreapi.com/products/category/women's%20clothing"
+      );
 
       const data = await response.json();
       setProducts(data);
@@ -27,7 +31,10 @@ function App() {
         <Header products={products} />
         <Routes>
           <Route path="/" element={<Home products={products} />} />
-          <Route path="/department" element={<Department />} />
+          <Route
+            path="/department"
+            element={<Department products={products} />}
+          />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/search" element={<SearchItems />} />
         </Routes>

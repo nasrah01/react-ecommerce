@@ -1,5 +1,5 @@
 import NavBar from '../Navigation/NavBar';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RiShoppingBagLine } from 'react-icons/ri';
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -17,13 +17,9 @@ const Header = ({products}) => {
 
   const [filterSearch, setFilterSearch] = useState(products);
 
-  useEffect(() => {
-    setFilterSearch(products);
-  }, [products]);
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(filterSearch);
+    console.log(filterSearch)
   };
 
 
