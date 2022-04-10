@@ -1,19 +1,23 @@
 import NavBar from '../Navigation/NavBar';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RiShoppingBagLine } from 'react-icons/ri';
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { getTotal } from '../../redux/reducers/cart';
 import './header.css';
-import { selectItems } from '../../redux/reducers/cart';
 
 const Header = ({products}) => {
 
-  const items = useSelector(selectItems);
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTotal());
+  }, [cart, dispatch]);
 
   const [filterSearch, setFilterSearch] = useState(products);
 
@@ -70,7 +74,7 @@ const Header = ({products}) => {
             style={{ textDecoration: "none", color: "#000" }}
           >
             <RiShoppingBagLine size={24} />
-            <span>{items.length}</span>
+            <span>{cart.cartQuantityTotal}</span>
           </Link>
         </div>
       </div>
