@@ -1,10 +1,15 @@
 import Products from '../components/Products/Products';
+import { useSelector } from "react-redux";
 
-const Department = ({products}) => {
+const Department = () => {
+
+  const items = useSelector((state) => state.products.departmentItems);
+
+    console.log(items);
 
   return(
     <div className="department">
-      <Products products={products}/>
+      <Products items={items}/>
     </div>
   )
 }

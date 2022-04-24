@@ -1,42 +1,25 @@
-import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/home";
 import Department from "./pages/department";
+import Item from './pages/item';
 import Checkout from "./pages/checkout";
-import SearchItems from './pages/search'
+import SearchResults from './pages/search'
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState([]);
-  console.log(products)
-
-  useEffect(() => {
-    const TopPicks = async () => {
-      const response = await fetch(
-        "https://fakestoreapi.com/products/category/women's%20clothing"
-      );
-
-      const data = await response.json();
-      setProducts(data);
-    };
-    TopPicks();
-  }, []);
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Header products={products} />
+        <Header />
         <Routes>
-          <Route path="/" element={<Home products={products} />} />
-          <Route
-            path="/department"
-            element={<Department products={products} />}
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/department" element={<Department />} />
+          <Route path="/item" element={<Item />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/search" element={<SearchItems />} />
+          <Route path="/search" element={<SearchResults />} />
         </Routes>
         <Footer />
       </BrowserRouter>

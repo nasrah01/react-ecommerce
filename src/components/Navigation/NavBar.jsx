@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +10,9 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { departments } from "../../redux/reducers/items";
+import { useDispatch } from "react-redux";
 
 const theme = createTheme();
 
@@ -34,10 +35,11 @@ const darkTheme = createTheme({
   },
 });
 
-const pages = ["Women's clothing", "Men's clothing", "Jewelery", "electronics"];
+const pages = ["women's clothing", "men's clothing", "jewelery", "electronics"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
+   const dispatch = useDispatch();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -82,7 +84,7 @@ const NavBar = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <Link to="/department" state={{page}} style={{ textDecoration: "none" }} key={page}><MenuItem onClick={handleCloseNavMenu}>
+                  <Link to="/department" style={{ textDecoration: "none" }} key={page} onClick={() => dispatch(departments(page))}><MenuItem onClick={handleCloseNavMenu}>
                     <ThemeProvider theme={theme}>
                       <Typography variant="h3" textAlign="center">
                         {page}
@@ -103,7 +105,7 @@ const NavBar = () => {
               }}
             >
               {pages.map((page) => (
-                <Link to="/department" state={{page}} style={{ textDecoration: "none" }} key={page}><Button
+                <Link to="/department" style={{ textDecoration: "none" }} key={page} onClick={() => dispatch(departments(page))}><Button
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, mr: 2, ml: 2, color: "#fff", display: "block" }}
                 >
