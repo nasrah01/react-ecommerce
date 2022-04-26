@@ -18,6 +18,7 @@ const SearchBar = () => {
     e.preventDefault();
     dispatch(filterItems(filterSearch));
     navigate("/search", { replace: true });
+    setFilterSearch('');
   }
 
   return (
@@ -26,11 +27,13 @@ const SearchBar = () => {
         component="form"
         sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
         onSubmit={handleSearchFilter}
+        square
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Search products"
           inputProps={{ "aria-label": "search products" }}
+          value={filterSearch}
           onChange={(e) => setFilterSearch(e.target.value.toLowerCase())}
         />
         <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">

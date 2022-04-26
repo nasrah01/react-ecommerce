@@ -20,29 +20,28 @@ export const productsSlice = createSlice({
   name: "products",
   initialState: {
     items: [],
-    item: [],
+    item: localStorage.getItem("productDetails") ? JSON.parse(localStorage.getItem("productDetails")) : [],
     filter: [],
-    departmentItems : [],
-    department: null,
+    departmentItems : localStorage.getItem("department") ? JSON.parse(localStorage.getItem("department")) : [],
     status: null,
     error: null,
   },
   reducers: {
     departments: (state, action) => {
-      state.department = action.payload;
+
       const index = state.items.filter((items) => items.category === action.payload);
 
       state.departmentItems = index;
+      localStorage.setItem("department", JSON.stringify(state.departmentItems));
     },
     selectedItem: (state, action) => {
       state.item = action.payload;
+      localStorage.setItem("productDetails", JSON.stringify(state.item));
 
     },
     filterItems: (state, action) => {
       const index = state.items.filter((search) => search.title.toLowerCase().includes(action.payload));
       state.filter = index;
-      console.log(action.payload);
-      console.log(state.filter.length)
     },
   },
   extraReducers: {

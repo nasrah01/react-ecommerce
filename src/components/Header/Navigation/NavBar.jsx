@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
-import { departments } from "../../redux/reducers/items";
+import { departments } from "../../../redux/reducers/items";
 import { useDispatch } from "react-redux";
 
 const theme = createTheme();
@@ -28,9 +28,8 @@ theme.typography.h3 = {
 
 const darkTheme = createTheme({
   palette: {
-    mode: "dark",
     primary: {
-      main: "#1976d2",
+      main: "#000F04",
     },
   },
 });
@@ -51,7 +50,7 @@ const NavBar = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <AppBar position="static">
+      <AppBar position="static" elevation={0}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -84,15 +83,22 @@ const NavBar = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <Link to="/department" style={{ textDecoration: "none" }} key={page} onClick={() => dispatch(departments(page))}><MenuItem onClick={handleCloseNavMenu}>
-                    <ThemeProvider theme={theme}>
-                      <Typography variant="h3" textAlign="center">
-                        {page}
-                      </Typography>
-                    </ThemeProvider>
-                  </MenuItem></Link>
+                  <Link
+                    to="/department"
+                    style={{ textDecoration: "none" }}
+                    key={page}
+                    onClick={() => dispatch(departments(page))}
+                  >
+                    <MenuItem onClick={handleCloseNavMenu}>
+                      <ThemeProvider theme={theme}>
+                        <Typography variant="h3" textAlign="center">
+                          {page}
+                        </Typography>
+                      </ThemeProvider>
+                    </MenuItem>
+                  </Link>
                 ))}
-              </Menu> 
+              </Menu>
             </Box>
             <Box
               sx={{
@@ -105,16 +111,29 @@ const NavBar = () => {
               }}
             >
               {pages.map((page) => (
-                <Link to="/department" style={{ textDecoration: "none" }} key={page} onClick={() => dispatch(departments(page))}><Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, mr: 2, ml: 2, color: "#fff", display: "block" }}
+                <Link
+                  to="/department"
+                  style={{ textDecoration: "none" }}
+                  key={page}
+                  onClick={() => dispatch(departments(page))}
                 >
-                  <ThemeProvider theme={theme}>
-                    <Typography variant="h3" textAlign="center">
-                      {page}
-                    </Typography>
-                  </ThemeProvider>
-                </Button></Link>
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      mr: 2,
+                      ml: 2,
+                      color: "#fff",
+                      display: "block",
+                    }}
+                  >
+                    <ThemeProvider theme={theme}>
+                      <Typography variant="h3" textAlign="center">
+                        {page}
+                      </Typography>
+                    </ThemeProvider>
+                  </Button>
+                </Link>
               ))}
             </Box>
           </Toolbar>

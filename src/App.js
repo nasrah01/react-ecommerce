@@ -6,9 +6,18 @@ import Home from "./pages/home";
 import Department from "./pages/department";
 import Item from './pages/item';
 import Checkout from "./pages/checkout";
-import SearchResults from './pages/search'
+import SearchResults from './pages/search';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getProducts } from "./redux/reducers/items";
 
 function App() {
+
+  const dispatch = useDispatch();
+
+      useEffect(() => {
+        dispatch(getProducts());
+      }, [dispatch]);
 
   return (
     <div className="App">

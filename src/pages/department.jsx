@@ -5,8 +5,6 @@ const Department = () => {
 
   const items = useSelector((state) => state.products.departmentItems);
 
-    console.log(items);
-
   return(
     <div className="department">
       <Products items={items}/>

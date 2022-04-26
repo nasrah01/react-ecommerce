@@ -1,4 +1,4 @@
-import NavBar from '../Navigation/NavBar';
+import NavBar from './Navigation/NavBar';
 import SearchBar from './SearchBar';
 import { useEffect } from "react";
 import { RiShoppingBagLine } from 'react-icons/ri';
@@ -11,6 +11,7 @@ const Header = () => {
 
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const cartTotal = cart.cartQuantityTotal;
 
   useEffect(() => {
     dispatch(getTotal());
@@ -27,14 +28,24 @@ const Header = () => {
         </div>
         <SearchBar />
         <div className="header__cart">
-          <p>Sign in</p>
+          <div>
+            <p>Sign in</p>
+          </div>
+          
           <Link
             to="/checkout"
             style={{ textDecoration: "none", color: "#000" }}
           >
-            <RiShoppingBagLine size={24} />
-            <span>{cart.cartQuantityTotal}</span>
+            <div className="cart">
+              <RiShoppingBagLine size={36} />
+              {
+                cartTotal > 0 && (
+                <div className="cart__quantity"><span>{cartTotal}</span></div>
+                )
+              }
+            </div>
           </Link>
+          
         </div>
       </div>
       <div className="header__secondary">

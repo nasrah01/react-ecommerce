@@ -62,29 +62,26 @@ const Product = ({ item }) => {
 
   return (
     <div>
-      <Link to="/item" style={{ textDecoration: "none" }} key={id}>
       <Card sx={{ maxWidth: 345 }} onClick={getItemDetails}>
+        <Link to="/item" style={{ textDecoration: "none" }} key={id}>
         <ThemeProvider theme={theme}>
           <CardMedia component="img" height="240" image={image} alt="apparel" />
         </ThemeProvider>
         <CardContent>
-          <Typography gutterBottom variant="body2" color="text.secondary">
-            {category}
-          </Typography>
-          <Typography gutterBottom variant="body2" component="div">
+          <Typography gutterBottom variant="body2" color="text.primary" component="div">
             {truncateString(title, 30)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             <CurrencyFormat value={price} prefix={"£"} displayType={"text"} />
           </Typography>
         </CardContent>
+        </Link>
         <CardActions>
           <IconButton onClick={addItemToCart}>
             <LocalMallOutlinedIcon />
           </IconButton>
         </CardActions>
       </Card>
-      </Link>
     </div>
   );
 };
