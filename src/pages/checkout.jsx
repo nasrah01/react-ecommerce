@@ -85,7 +85,7 @@ const Checkout = () => {
                 </div>
                 <Stack direction="row" spacing={2}>
                   <Button variant="contained" color="success" sx={{ m: 1 }}>
-                    Login to checkout
+                    checkout
                   </Button>
                 </Stack>
               </div>

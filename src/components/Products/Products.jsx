@@ -8,9 +8,22 @@ const Products = ({items}) => {
 
   return (
     <div className="products__grid">
-      <Grid container justify="center" spacing={4}>
+      <Grid
+        container
+        direction="row-reverse"
+        justifyContent="center"
+        alignItems="center"
+        spacing={2}
+      >
         {items.map((item) => (
-          <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
+          <Grid
+            key={item.id}
+            item
+            xs={10}
+            sm={6}
+            md={4}
+            lg={3}
+          >
             <Product item={item} />
           </Grid>
         ))}

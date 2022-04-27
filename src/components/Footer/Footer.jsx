@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer__social">
-        <div className="footer__social-media">
+        <div className="footer__social--media">
           <IconContext.Provider value={{ color: "#fff", size: "1.5rem" }}>
             <div className='footer__icon'><FaFacebookF /></div>
             <div className='footer__icon'><FaTwitter /></div>
@@ -24,7 +24,7 @@ const Footer = () => {
             <div className='footer__icon'><FaInstagram /></div>
           </IconContext.Provider>
         </div>
-        <div className="footer__social-app">
+        <div className="footer__social--app">
           <img src={appStore} alt="app store link" />
           <img src={googleStore} alt="google play link" />
         </div>

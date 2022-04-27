@@ -1,7 +1,7 @@
-import IMG1 from '../assets/image-54966.jpeg';
+import IMG4 from '../assets/image-54966.jpeg';
 import IMG2 from "../assets/image-23764.jpeg";
 import IMG3 from "../assets/image-54645.jpeg";
-import IMG4 from "../assets/image-45344.jpeg";
+import IMG1 from "../assets/image-45344.jpeg";
 
 export const sliderData = [
   {

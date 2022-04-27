@@ -1,16 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Card from "@mui/material/Card";
 import { Link } from "react-router-dom";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { IconButton } from "@mui/material";
-import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import "./products.css";
-import { addToCart } from "../../redux/reducers/cart";
 import { selectedItem } from '../../redux/reducers/items'
 import CurrencyFormat from "react-currency-format";
 
@@ -18,20 +11,9 @@ const Product = ({ item }) => {
 
   const dispatch = useDispatch();
 
-  const {id, image, category, title, description, price} = item;
+  const {id, image, title, price, rating} = item;
 
-  const addItemToCart = () => {
-    const product = {
-      id,
-      image,
-      category,
-      title,
-      description,
-      price,
-    };
-
-    dispatch(addToCart(product))
-  }
+  const ratings = Math.round(rating.rate);
 
   const getItemDetails = () => {
     dispatch(selectedItem(item));
@@ -62,25 +44,26 @@ const Product = ({ item }) => {
 
   return (
     <div>
-      <Card sx={{ maxWidth: 345 }} onClick={getItemDetails}>
+      <Card sx={{ border: 0, boxShadow: 1, borderRadius: 1 }} variant="outlined" onClick={getItemDetails}>
         <Link to="/item" style={{ textDecoration: "none" }} key={id}>
         <ThemeProvider theme={theme}>
-          <CardMedia component="img" height="240" image={image} alt="apparel" />
+          <CardMedia component="img" height="290" image={image} alt="apparel" />
         </ThemeProvider>
         <CardContent>
           <Typography gutterBottom variant="body2" color="text.primary" component="div">
             {truncateString(title, 30)}
+          </Typography>
+          <Typography gutterBottom variant="body2" color="text.primary" component="div">
+            {[...Array(ratings)].map((star, index) => {
+              index += 1;
+              return <span className="item__star" key={index}>&#9733;</span>;
+            })}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             <CurrencyFormat value={price} prefix={"£"} displayType={"text"} />
           </Typography>
         </CardContent>
         </Link>
-        <CardActions>
-          <IconButton onClick={addItemToCart}>
-            <LocalMallOutlinedIcon />
-          </IconButton>
-        </CardActions>
       </Card>
     </div>
   );
