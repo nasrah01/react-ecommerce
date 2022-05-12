@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 1rem 0;
   margin: 0 190px;
   border-bottom: 1px solid #f2f2f2;
 }
@@ -17,7 +17,7 @@
 }
 
 .footer__icon {
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .footer__social--app {
@@ -32,7 +32,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .footer__links p {

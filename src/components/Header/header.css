@@ -47,3 +47,21 @@
 .cart__quantity span {
   color: white;
 }
+
+.search {
+  background: #f2f2f2;
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search__input {
+  border: none;
+  background: #f2f2f2;
+  flex: 80%;
+  padding: 0 1rem;
+}
+
+.search__input:focus{
+    outline: none;
+}

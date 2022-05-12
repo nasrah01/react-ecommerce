@@ -203,6 +203,7 @@
 .checkout__container {
   min-height: 65vh;
   padding: 0 calc((100vw - 1700px) / 2);
+  margin-bottom: 5rem;
 }
 
 .checkout__info {
@@ -435,4 +436,28 @@
   .checkout__option {
     margin: 3rem 1rem;
   }
+}
+
+/* search results */
+
+.search__results {
+  min-height: 80vh;
+}
+
+.search__results h2 {
+  padding: 2rem;
+  font-weight: normal;
+}
+
+.search__error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.search__error h3 {
+  font-weight: normal;
+  text-align: center;
 }
