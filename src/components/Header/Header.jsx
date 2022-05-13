@@ -2,6 +2,7 @@ import NavBar from './Navigation/NavBar';
 import SearchBar from './SearchBar';
 import { useEffect } from "react";
 import { RiShoppingBagLine } from 'react-icons/ri';
+import { BsFillPersonFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotal } from '../../redux/reducers/cart';
@@ -29,7 +30,8 @@ const Header = () => {
         <SearchBar />
         <div className="header__cart">
           <div>
-            <p>Sign in</p>
+            <p className="signin">Sign in</p>
+            <div className="signin__responsive"><BsFillPersonFill size={30}/></div>
           </div>
           
           <Link
@@ -37,7 +39,7 @@ const Header = () => {
             style={{ textDecoration: "none", color: "#000" }}
           >
             <div className="cart">
-              <RiShoppingBagLine size={36} />
+              <RiShoppingBagLine size={30} />
               {
                 cartTotal > 0 && (
                 <div className="cart__quantity"><span>{cartTotal}</span></div>

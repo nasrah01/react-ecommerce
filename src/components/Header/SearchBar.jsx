@@ -19,7 +19,7 @@ const SearchBar = () => {
   }
 
   return (
-    <>
+    <div className="header__search">
       <form onSubmit={handleSearchFilter} className="search">
         <input
           className="search__input"
@@ -31,7 +31,7 @@ const SearchBar = () => {
           <SearchIcon />
         </IconButton>
       </form>
-    </>
+    </div>
   );
 };
 

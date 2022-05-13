@@ -18,9 +18,9 @@ const Home = () => {
               Use #S&K or tag us in your clothing or home snaps for your
               chance to be featured and win a £100 S&K voucher. T&Cs apply.
             </p>
-            <div>
+            <div className="gallery__btn">
               <button className='btn-1'>Upload your photo</button>
-              <button className='btn-2'>View Gallery</button>
+              <button className='btn-2'>View our Gallery</button>
             </div>
           </div>
           <div className="homepage__mosaic">
