@@ -2,6 +2,7 @@
   "name": "shop-k",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shop-kart-ecommerce.herokuapp.com",
   "dependencies": {
     "@mui/icons-material": "^5.4.2",
     "@reduxjs/toolkit": "^1.8.0",
