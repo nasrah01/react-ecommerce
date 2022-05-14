@@ -1,8 +1,8 @@
 import NavBar from './Navigation/NavBar';
 import SearchBar from './SearchBar';
 import { useEffect } from "react";
-import { RiShoppingBagLine } from 'react-icons/ri';
-import { BsFillPersonFill } from 'react-icons/bs';
+import { BsHandbag } from "react-icons/bs";
+import { VscSignIn } from "react-icons/vsc";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotal } from '../../redux/reducers/cart';
@@ -31,7 +31,7 @@ const Header = () => {
         <div className="header__cart">
           <div>
             <p className="signin">Sign in</p>
-            <div className="signin__responsive"><BsFillPersonFill size={30}/></div>
+            <div className="signin__responsive"><VscSignIn size={30}/></div>
           </div>
           
           <Link
@@ -39,7 +39,7 @@ const Header = () => {
             style={{ textDecoration: "none", color: "#000" }}
           >
             <div className="cart">
-              <RiShoppingBagLine size={30} />
+              <BsHandbag size={30} />
               {
                 cartTotal > 0 && (
                 <div className="cart__quantity"><span>{cartTotal}</span></div>
