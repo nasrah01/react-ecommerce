@@ -2,7 +2,7 @@
   "name": "shop-k",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/",
+  "homepage": "https://grand-lokum-45486f.netlify.app/",
   "dependencies": {
     "@mui/icons-material": "^5.4.2",
     "@reduxjs/toolkit": "^1.8.0",
