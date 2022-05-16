@@ -23,6 +23,7 @@ const CartItems = ({ id, title, image, price, cartQuantity }) => {
     dispatch(decreaseCartQuantity({ id }));
   }
 
+  const totalValue = price * cartQuantity;
 
   return (
     <div className="checkout__item">
@@ -43,7 +44,7 @@ const CartItems = ({ id, title, image, price, cartQuantity }) => {
         </div>
         <div className="checkout__subtotal">
           <CurrencyFormat
-            value={price * cartQuantity}
+            value={totalValue.toFixed(2)}
             prefix={"£"}
             displayType={"text"}
           />
