@@ -61,7 +61,7 @@ const Item = () => {
               return <span className="item__star" key={index}>&#9733;</span>;
             })}
           </div>
-          <CurrencyFormat className="item__price" value={price} prefix={"£"} displayType={"text"} />
+          <CurrencyFormat className="item__price" value={price.toFixed(2)} prefix={"£"} displayType={"text"} />
           <div className="item__details">
             <h3>Product details</h3>
             <p>{description}</p>

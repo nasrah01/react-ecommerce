@@ -60,7 +60,7 @@ const Product = ({ item }) => {
             })}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <CurrencyFormat value={price} prefix={"£"} displayType={"text"} />
+            <CurrencyFormat value={price.toFixed(2)} prefix={"£"} displayType={"text"} />
           </Typography>
         </CardContent>
         </Link>

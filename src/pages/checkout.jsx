@@ -77,7 +77,7 @@ const Checkout = () => {
                   <div>Total</div>
                   <div>
                     <CurrencyFormat
-                      value={cart.cartTotalAmount}
+                      value={cart.cartTotalAmount.toFixed(2)}
                       prefix={"£"}
                       displayType={"text"}
                     />
