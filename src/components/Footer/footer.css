@@ -17,7 +17,14 @@
 }
 
 .footer__icon {
-  padding: 0 1rem;
+  margin: 0 .5rem;
+  padding: .8rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.footer__icon:hover {
+  background-color: rgb(72, 69, 69);
 }
 
 .footer__social--app {
