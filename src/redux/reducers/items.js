@@ -22,12 +22,13 @@ export const productsSlice = createSlice({
     items: [],
     item: localStorage.getItem("productDetails") ? JSON.parse(localStorage.getItem("productDetails")) : [],
     filter: [],
-    departmentItems : localStorage.getItem("department") ? JSON.parse(localStorage.getItem("department")) : [],
+    departmentItems : localStorage.getItem("department") ? JSON.parse(localStorage.getItem("department")) : ['not updated'],
     status: null,
     error: null,
   },
   reducers: {
     departments: (state, action) => {
+      console.log(state.items)
 
       const index = state.items.filter((items) => items.category === action.payload);
 
