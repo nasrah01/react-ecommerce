@@ -3,7 +3,7 @@ import CurrencyFormat from "react-currency-format";
 import { addToCart } from "../redux/reducers/cart";
 import { selectedItem } from '../redux/reducers/items';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Button, Stack, Grid, Card, CardMedia } from "@mui/material";
+import { Grid, Card, CardMedia } from "@mui/material";
 import { Link } from 'react-router-dom';
 
 const Item = () => {
@@ -67,16 +67,14 @@ const Item = () => {
             <p>{description}</p>
           </div>
           <div>
-            <Stack direction="row" spacing={2}>
-              <Button onClick={addItemToCart} variant="contained" color="success">
+              <button onClick={addItemToCart} className='btn btn-1'>
                 Add to basket
-              </Button>
+              </button>
               <Link to="/checkout" style={{ textDecoration: "none" }}>
-                <Button variant="contained" color="success">
+                <button className='btn btn-2'>
                   checkout
-                </Button>
+                </button>
               </Link>
-            </Stack>
           </div>
         </div>
       </div>
@@ -85,11 +83,11 @@ const Item = () => {
         <h3>You may also like</h3>
         <Grid container justifyContent="center" spacing={5}>
             {suggestions.map((item) => ( 
-              <Grid item width={200}>
-                <Card sx={{ border: 0, boxShadow: 1, borderRadius: 1 }}  onClick={() => dispatch(selectedItem(item))}>
+              <Grid item width={250}>
+                <Card sx={{ border: 0, boxShadow: 1, borderRadius: 1, p: 2}}  onClick={() => dispatch(selectedItem(item))}>
                   <Link to="/item" style={{ textDecoration: "none" }} key={item.id}>
                     <ThemeProvider theme={theme}>
-                      <CardMedia component="img" height="200" image={item.image} alt={item.catagory} />
+                      <CardMedia component="img" height="250" image={item.image} alt={item.catagory} />
                     </ThemeProvider>
                   </Link>
                 </Card> 

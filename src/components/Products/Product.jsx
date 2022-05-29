@@ -47,19 +47,19 @@ const Product = ({ item }) => {
       <Card sx={{ border: 0, boxShadow: 1, borderRadius: 1 }} variant="outlined" onClick={getItemDetails}>
         <Link to="/item" style={{ textDecoration: "none" }} key={id}>
         <ThemeProvider theme={theme}>
-          <CardMedia component="img" height="290" image={image} alt="apparel" />
+          <CardMedia component="img" height="290" image={image} alt="apparel" checkout__summary--title/>
         </ThemeProvider>
         <CardContent>
-          <Typography gutterBottom variant="body2" color="text.primary" component="div">
+          <Typography gutterBottom variant="body2" color="text.primary" component="div" sx={{ fontSize: 16 }}>
             {truncateString(title, 30)}
           </Typography>
-          <Typography gutterBottom variant="body2" color="text.primary" component="div">
+          <Typography gutterBottom variant="body2" color="text.primary" component="div" >
             {[...Array(ratings)].map((star, index) => {
               index += 1;
               return <span className="item__star" key={index}>&#9733;</span>;
             })}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" sx={{ fontSize: 20 }}>
             <CurrencyFormat value={price.toFixed(2)} prefix={"£"} displayType={"text"} />
           </Typography>
         </CardContent>

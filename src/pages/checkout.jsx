@@ -4,7 +4,6 @@ import CartItems  from '../components/Cart/CartItems';
 import {selectItems, getTotal} from '../redux/reducers/cart';
 import CurrencyFormat from "react-currency-format";
 import { RiShoppingBagLine } from "react-icons/ri";
-import { Button, Stack } from "@mui/material";
 import { Link } from 'react-router-dom';
 import { HiOutlineInformationCircle } from 'react-icons/hi'
 
@@ -36,13 +35,11 @@ const Checkout = () => {
           <div className="checkout__empty">
             <RiShoppingBagLine size={42} />
             <h3>Basket Empty</h3>
-            <p className="pd checkout__empty--content">Your bag needs filling</p>
+            <p className="pd checkout__empty--content">
+              Your bag needs filling
+            </p>
             <Link to="/" style={{ textDecoration: "none" }}>
-              <Stack direction="row" spacing={2}>
-                <Button variant="contained" color="success">
-                  Continue shopping
-                </Button>
-              </Stack>
+              <button className="btn btn-2">Continue shopping</button>
             </Link>
           </div>
         </div>
@@ -74,8 +71,8 @@ const Checkout = () => {
               <h2>Summary</h2>
               <div className="checkout__summary--total">
                 <div className="checkout__summary--flex">
-                  <div>Total</div>
-                  <div>
+                  <div className="checkout__summary--title">Total</div>
+                  <div className="checkout__summary--value">
                     <CurrencyFormat
                       value={cart.cartTotalAmount.toFixed(2)}
                       prefix={"£"}
@@ -83,11 +80,9 @@ const Checkout = () => {
                     />
                   </div>
                 </div>
-                <Stack direction="row" spacing={2}>
-                  <Button variant="contained" color="success" sx={{ m: 1 }}>
-                    checkout
-                  </Button>
-                </Stack>
+                <div className="checkout__summary--btn">
+                  <button className="btn btn-2">checkout</button>
+                </div>
               </div>
             </div>
           </div>

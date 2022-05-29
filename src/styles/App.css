@@ -4,22 +4,26 @@
   min-height: 70vh;
 }
 
+.btn {
+  font-size: 1.4rem !important;
+}
+
 .btn-1 {
-  background: transparent;
-  border: 1px solid #000;
-  padding: 5px 12px;
-  text-align: center;
-  text-decoration: none;
-  margin: 0 1rem;
+  background: transparent !important;
+  border: 1px solid #000 !important;
+  padding: 5px 12px !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  margin: 0 1rem !important;
 }
 
 .btn-2 {
-  background: #000;
-  border: 1px solid #000;
-  color: #fff;
-  padding: 5px 12px;
-  text-align: center;
-  text-decoration: none;
+  background: #000 !important;
+  border: 1px solid #000 !important;
+  color: #fff !important;
+  padding: 5px 12px !important;
+  text-align: center !important;
+  text-decoration: none !important;
 }
 
 .top__picks {
@@ -43,128 +47,54 @@
 
 .top__picks--header p {
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .top__picks--header button {
   text-align: center;
+  font-size: 1.4rem;
 }
 
 .homepage__mosaic {
    width: 100%;
-   margin: 2rem auto; 
+   margin-top: 5rem;
 }
 
 .mosaic {
-  display: grid;
-  grid-template-columns: repeat(17, 1fr);
-  grid-template-rows: repeat(5, 7vw);
-  grid-gap: 10px;
+  display: flex;
+  align-items: center;
 }
 
-.mosaic__img {
-  width: 100%;
-  height: 100%;
+.mosaic__container {
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 
-.mosaic__img img {
+.mosaic__card {
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.mosaic__card img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  display: block;
+  object-fit: contain;  
 }
 
-.mosaic__img:nth-child(3) {
-  grid-column: 1 / 6;
-  grid-row: 1 / 6;
+.mosaic__card p {
+  font-size: 1.5rem;
+  color: #000;
+  margin: 0;
+  padding: 1rem;
+  font-weight: 500;
 }
 
-.mosaic__img:nth-child(2) {
-  grid-column: 6 / 12;
-  grid-row: 1 / 4;
-}
-
-.mosaic__img:nth-child(1) {
-  grid-column: 12 / 18;
-  grid-row: 1 / 4;
-}
-
-.mosaic__img:nth-child(4) {
-  grid-column: 6 / 9;
-  grid-row: 4 / 6;
-}
-
-.mosaic__img:nth-child(5) {
-  grid-column: 9 / 12;
-  grid-row: 4 / 6;
-}
-
-.mosaic__img:nth-child(6) {
-  grid-column: 12 / 15;
-  grid-row: 4 / 6;
-}
-
-.mosaic__img:nth-child(7) {
-  grid-column: 15 / 18;
-  grid-row: 4 / 6;
-}
-
-@media screen and (max-width: 800px) {
-
-  .top__picks {
-    margin: 0 20px;
-  }
-
+@media screen and (max-width: 900px) {
   .mosaic {
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(8, 7vw);
-    grid-gap: 10px;
-    margin-top: 50px;
-  }
-
-  .mosaic__img:nth-child(6) {
-    display: none;
-  }
-
-  .mosaic__img:nth-child(7) {
-    display: none;
-  }
-
-  .mosaic__img:nth-child(3) {
-    grid-column: 1 / 5;
-    grid-row: 4 / 9;
-    justify-self: end;
-  }
-
-  .mosaic__img:nth-child(2) {
-    grid-column: 1 / 5;
-    grid-row: 1 / 4;
-    justify-self: start;
-  }
-
-  .mosaic__img:nth-child(1) {
-    grid-column: 4 / 8;
-    grid-row: 1 / 4;
-    justify-self: center;
-  }
-
-  .mosaic__img:nth-child(4) {
-    grid-column: 4 / 6;
-    grid-row: 5 / 9;
-  }
-
-  .mosaic__img:nth-child(5) {
-    grid-column: 6 / 9;
-    grid-row: 5 / 9;
-  }
-
-  .mosaic__img {
-    box-shadow: none;
+    flex-direction: column;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
   .gallery__btn {
     display: flex;
     flex-direction: column;
@@ -177,10 +107,6 @@
 
     .top__picks {
     margin: 0 10px;
-  }
-
-  .mosaic {
-    margin-top: 3rem;
   }
 }
 
@@ -233,7 +159,7 @@
 }
 
 .item__details p {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .item__star {
@@ -255,6 +181,7 @@
   text-transform: uppercase;
   font-weight: 400;
   margin-bottom: 2rem;
+  font-size: 2rem;
 }
 
 @media screen and (max-width: 1400px) {
@@ -379,6 +306,10 @@
   justify-content: space-between;
 }
 
+.checkout__summary--btn {
+  margin-top: 1rem;
+}
+
 .checkout__item {
   border-top: 1px solid #cccccc;
   margin: 0 2rem;
@@ -434,8 +365,12 @@
   align-items: flex-start;
 }
 
+.count {
+  font-size: 1.5rem;
+}
+
 .checkout__cartquantity button {
-  background-color: #4CAF50;
+  background-color: #000;
   border: none;
   color: white;
   line-height: 1.75;
@@ -443,6 +378,7 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  font-size: 1.5rem;
 }
 
 .checkout__cartquantity div {
@@ -453,6 +389,18 @@
 
 .checkout__subtotal {
   line-height: 1.75;
+}
+
+.checkout__subtotal span {
+  font-size: 1.5rem;
+}
+
+.checkout__summary--title {
+  font-size: 1.5rem;
+}
+
+.checkout__summary--value span {
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 1154px) {

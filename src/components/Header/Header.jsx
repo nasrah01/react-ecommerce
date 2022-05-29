@@ -31,15 +31,14 @@ const Header = () => {
         <div className="header__cart">
           <div>
             <p className="signin">Sign in</p>
-            <div className="signin__responsive"><VscSignIn size={30}/></div>
+            <div className="signin__responsive icon"><VscSignIn /></div>
           </div>
-          
           <Link
             to="/checkout"
             style={{ textDecoration: "none", color: "#000" }}
           >
             <div className="cart">
-              <BsHandbag size={30} />
+              <div className="icon"><BsHandbag /></div>
               {
                 cartTotal > 0 && (
                 <div className="cart__quantity"><span>{cartTotal}</span></div>
@@ -47,7 +46,6 @@ const Header = () => {
               }
             </div>
           </Link>
-          
         </div>
       </div>
       <div className="header__secondary">
