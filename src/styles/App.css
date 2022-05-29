@@ -95,16 +95,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  .gallery__btn {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .btn-2 {
-    margin-top: 1rem;
-  }
-
     .top__picks {
     margin: 0 10px;
   }
@@ -160,6 +150,11 @@
 
 .item__details p {
   font-size: 15px;
+}
+
+.item__checkout--btn {
+  display: flex;
+  align-items: center;
 }
 
 .item__star {

@@ -66,7 +66,7 @@ const Item = () => {
             <h3>Product details</h3>
             <p>{description}</p>
           </div>
-          <div>
+          <div className='item__checkout--btn'>
               <button onClick={addItemToCart} className='btn btn-1'>
                 Add to basket
               </button>
