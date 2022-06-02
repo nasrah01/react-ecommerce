@@ -6,7 +6,6 @@ import {
 } from "../../redux/reducers/cart";
 import CurrencyFormat from "react-currency-format";
 
-
 const CartItems = ({ id, title, image, price, cartQuantity }) => {
 
   const dispatch = useDispatch();

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { filterItems } from "../../redux/reducers/items";
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
+import { GoSearch } from "react-icons/go";
 import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
@@ -27,9 +26,9 @@ const SearchBar = () => {
           value={filterSearch}
           onChange={(e) => setFilterSearch(e.target.value.toLowerCase())}
         />
-        <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
-          <SearchIcon />
-        </IconButton>
+        <button className="search__button" type="submit">
+          <GoSearch />
+        </button>
       </form>
     </div>
   );

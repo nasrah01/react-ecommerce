@@ -65,6 +65,8 @@
   width: 30vw;
   display: flex;
   justify-content: space-between;
+  padding: .5rem 0;
+  border-radius: 5px;
 }
 
 .search__input {
@@ -78,6 +80,24 @@
 
 .search__input:focus{
     outline: none;
+}
+
+.search__button {
+  padding:.5rem;
+  margin-right: 1rem;
+  color: #666666;
+  font-size: 34px;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  transition: .5s ease;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+}
+
+.search__button:hover {
+  background-color: #d9d9d9;
 }
 
 /* navigation */
@@ -131,6 +151,10 @@
 
   .search {
     width: 70vw;
+  }
+
+  .search__button {
+    font-size: 28px;
   }
 
   .signin {
@@ -217,4 +241,10 @@
   .nav__link {
   font-size: 18px;
   }
+}
+
+@media screen and (max-width: 480px) {
+    .search__button {
+      font-size: 24px;
+    }
 }
