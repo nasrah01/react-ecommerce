@@ -10,6 +10,7 @@ import SearchResults from './pages/search';
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getProducts } from "./redux/reducers/items";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
+        <ScrollToTop>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/department" element={<Department />} />
@@ -30,6 +32,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/search" element={<SearchResults />} />
         </Routes>
+        </ScrollToTop>
         <Footer />
       </BrowserRouter>
     </div>

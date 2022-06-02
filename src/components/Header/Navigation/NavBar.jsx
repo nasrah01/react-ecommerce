@@ -15,11 +15,11 @@ const NavBar = () => {
 
   return (
     <nav className="nav">
-      <div className="nav__icons">
+      <div className="nav__icons icon">
         {isOpen ? (
-          <CgClose color='#fff' size={30} onClick={() => setIsOpen(false)} />
+          <CgClose color='#fff' onClick={() => setIsOpen(false)} />
         ) : (
-          <CgMenuRight size={30} onClick={() => setIsOpen(true)} />
+          <CgMenuRight onClick={() => setIsOpen(true)} />
         )}
       </div>
       <ul className={isOpen ? "nav__container" : "nav__container nav__hidden"}>
