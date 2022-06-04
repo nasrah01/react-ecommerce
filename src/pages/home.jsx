@@ -1,31 +1,19 @@
 import Slider from '../components/Home/Slider';
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectedItem } from "../redux/reducers/items";
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from "react";
-import axios from 'axios'
+import { useEffect } from "react";
+import { getProducts } from "../redux/reducers/items";
 
 const Home = () => {
 
-  const dispatch = useDispatch();
-  const [products, setProducts] = useState([])
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://fakestoreapi.com/products"
-        );
-        setProducts(response.data)
-      } catch (error) {
-        console.log(error.message)
-      }
-    }
+    useEffect(() => {
+      dispatch(getProducts());
+    }, [dispatch]);
 
-    fetchData()
-  }, [])
-
-  const featureProducts = products.slice(12, 14);
+    const products = useSelector((state) => state.products.items).slice(12, 14);
 
   return (
     <div>
@@ -44,7 +32,7 @@ const Home = () => {
         </div>
         <div className="homepage__mosaic">
           <div className="mosaic">
-            {featureProducts.map((product) => (
+            {products.map((product) => (
               <div
                 className="mosaic__container"
                 key={product.id}
