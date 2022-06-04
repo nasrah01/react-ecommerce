@@ -7,18 +7,9 @@ import Department from "./pages/department";
 import Item from './pages/item';
 import Checkout from "./pages/checkout";
 import SearchResults from './pages/search';
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getProducts } from "./redux/reducers/items";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
-
-  const dispatch = useDispatch();
-
-      useEffect(() => {
-        dispatch(getProducts());
-      }, [dispatch]);
 
   return (
     <div className="App">

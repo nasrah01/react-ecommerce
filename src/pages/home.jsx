@@ -2,10 +2,17 @@ import Slider from '../components/Home/Slider';
 import { useSelector, useDispatch } from "react-redux";
 import { selectedItem } from "../redux/reducers/items";
 import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import { getProducts } from "../redux/reducers/items";
 
 const Home = () => {
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getProducts());
+    }, [dispatch]);
+
     const products = useSelector((state) => state.products.items).slice(12, 14);
 
   return (

@@ -11,3 +11,9 @@
 .slider__caption {
   font-weight: 700;
 }
+
+@media screen and (max-width: 600px) {
+  .slider__container {
+    padding: 0;
+  }
+}
