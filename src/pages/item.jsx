@@ -1,14 +1,14 @@
-import { useSelector, useDispatch } from "react-redux";
-import CurrencyFormat from "react-currency-format";
-import { addToCart } from "../redux/reducers/cart";
-import { selectedItem } from '../redux/reducers/items';
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Grid, Card, CardMedia } from "@mui/material";
-import { Link } from 'react-router-dom';
+// import { useSelector, useDispatch } from "react-redux";
+// import CurrencyFormat from "react-currency-format";
+// import { addToCart } from "../redux/reducers/cart";
+// import { selectedItem } from '../redux/reducers/items';
+// import { createTheme, ThemeProvider } from "@mui/material/styles";
+// import { Grid, Card, CardMedia } from "@mui/material";
+// import { Link } from 'react-router-dom';
 
 const Item = () => {
 
-  const itemSelection = useSelector((state) => state.products.item);
+  /* const itemSelection = useSelector((state) => state.products.item);
   const allItems = useSelector((state) => state.products.items);
   const dispatch = useDispatch();
 
@@ -17,9 +17,9 @@ const Item = () => {
 
   const {id, image, category, title, description, price, rating} = itemSelection;
 
-  const ratings = Math.round(rating.rate);
+  const ratings = Math.round(rating.rate); */
 
-   const addItemToCart = () => {
+ /*   const addItemToCart = () => {
      const product = {
        id,
        image,
@@ -41,15 +41,15 @@ const Item = () => {
            },
          },
        },
-     });
+     }); */
 
-   const suggestions = allItems.filter((items) => items.category === itemSelection.category).slice(0, 5);
-   console.log(suggestions)
+   /* const suggestions = allItems.filter((items) => items.category === itemSelection.category).slice(0, 5);
+   console.log(suggestions) */
 
   return (
     <div className="item__container">
       <div className="item">
-        <div className="item__image">
+        {/* <div className="item__image">
           <img src={image} alt={category} />
         </div>
         <div className="item__description">
@@ -93,7 +93,7 @@ const Item = () => {
                 </Card> 
               </Grid>
             ))}
-        </Grid>
+        </Grid> */}
       </div>
     </div>
   );

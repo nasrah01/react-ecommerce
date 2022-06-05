@@ -1,19 +1,31 @@
 import Slider from '../components/Home/Slider';
-import { useSelector, useDispatch } from "react-redux";
-import { selectedItem } from "../redux/reducers/items";
-import { Link } from 'react-router-dom';
-import { useEffect } from "react";
-import { getProducts } from "../redux/reducers/items";
+import { useEffect, useState } from "react";
+import { client } from '../client'
 
 const Home = () => {
 
-    const dispatch = useDispatch();
+    const [ products, setMosaicProducts ] = useState([])
 
     useEffect(() => {
-      dispatch(getProducts());
-    }, [dispatch]);
-
-    const products = useSelector((state) => state.products.items).slice(12, 14);
+      client
+        .fetch(
+          `*[_type == "mosaic"]{
+            product,
+            image{
+              asset->{
+                _id,
+                url
+              }
+            }
+        }`
+        )
+        .then((data) => {
+          setMosaicProducts(data)
+        })
+        .catch((error) => console.log(error.message));
+    }, [])
+    
+    console.log(products)
 
   return (
     <div>
@@ -32,24 +44,17 @@ const Home = () => {
         </div>
         <div className="homepage__mosaic">
           <div className="mosaic">
-            {products.map((product) => (
+            {products?.map((product, index) => (
               <div
                 className="mosaic__container"
-                key={product.id}
-                onClick={() => dispatch(selectedItem(product))}
+                key={index}
               >
-                <Link
-                  to="/item"
-                  style={{ textDecoration: "none" }}
-                  key={product.id}
-                >
                   <div className="mosaic__card">
-                    <img src={product.image} alt={products.catagory} />
-                    <p>{product.title}</p>
+                    <img src={product.image.asset.url} alt={product.product} />
+                    <p>{product.product}</p>
                   </div>
-                </Link>
               </div>
-            ))}
+            ))} 
           </div>
         </div>
       </div>

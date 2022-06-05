@@ -63,15 +63,12 @@
 .mosaic {
   display: flex;
   align-items: center;
-}
-
-.mosaic__container {
-  cursor: pointer;
+  justify-content: center;
 }
 
 .mosaic__card {
   padding: 2rem;
-  margin: 2rem;
+  cursor: pointer;
 }
 
 .mosaic__card img {

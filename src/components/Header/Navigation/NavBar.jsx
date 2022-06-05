@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom"
-import { departments } from "../../../redux/reducers/items"
-import { useDispatch } from "react-redux"
 import { useState } from 'react'
 import { CgMenuRight, CgClose } from 'react-icons/cg'
 
 
-const pages = ["women's clothing", "men's clothing", "jewelery", "electronics"]
+const pages = ["womenwear", "menswear", "kids clothing", "technology"];
 
 const NavBar = () => {
-  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
 
   window.addEventListener("resize", () => {setIsOpen(false)});
@@ -29,7 +26,6 @@ const NavBar = () => {
               className="nav__link"
               to="/department"
               onClick={() => {
-                dispatch(departments(page));
                 setIsOpen(false);
               }}
             >

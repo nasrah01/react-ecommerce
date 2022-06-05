@@ -1,14 +1,39 @@
+import { ConnectedTvOutlined } from '@mui/icons-material';
+import { useState, useEffect } from 'react';
+import { client } from '../client';
 import Products from '../components/Products/Products';
-import { useSelector } from "react-redux";
 
 const Department = () => {
 
-  const items = useSelector((state) => state.products.departmentItems);
-  console.log(items)
+  const [ category, setDepartmentProducts ] = useState()
+  const department = "Kids";
+
+   useEffect(() => {
+     client
+       .fetch(
+         `*[_type == "product" && department == "${department}"]{
+            image,
+            department,
+            title,
+            slug,
+            price,
+            details,
+            rating
+        }`
+       )
+       .then((data) => {
+         setDepartmentProducts(data);
+         console.log(data);
+       })
+       .catch((error) => console.log(error.message));
+   }, []);
+
+
+  console.log(category)
 
   return(
     <div className="department">
-      <Products items={items}/>
+      <Products />
     </div>
   )
 }

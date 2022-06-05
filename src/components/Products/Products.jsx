@@ -15,7 +15,7 @@ const Products = ({items}) => {
         alignItems="center"
         spacing={2}
       >
-        {items.map((item) => (
+        {/* {items.map((item) => (
           <Grid
             key={item.id}
             item
@@ -26,7 +26,7 @@ const Products = ({items}) => {
           >
             <Product item={item} />
           </Grid>
-        ))}
+        ))} */}
       </Grid>
     </div>
   );
