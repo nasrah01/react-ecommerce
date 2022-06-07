@@ -92,8 +92,6 @@
   border: none;
   border-radius: 50%;
   transition: .5s ease;
-  border-left: 1px solid #cccccc;
-  border-right: 1px solid #cccccc;
 }
 
 .search__button:hover {

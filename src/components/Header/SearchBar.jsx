@@ -1,18 +1,14 @@
 import { useState } from "react";
-import { useDispatch } from 'react-redux';
-import { filterItems } from "../../redux/reducers/items";
 import { GoSearch } from "react-icons/go";
 import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
 
   const [filterSearch, setFilterSearch] = useState('');
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSearchFilter = (e) => {
     e.preventDefault();
-    dispatch(filterItems(filterSearch));
     navigate("/search", { replace: true });
     setFilterSearch('');
   }

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
-import { useState } from 'react'
+import { useState} from 'react'
 import { CgMenuRight, CgClose } from 'react-icons/cg'
 
 
-const pages = ["womenwear", "menswear", "kids clothing", "technology"];
+const pages = ["womenswear", "menswear", "kids", "technology"];
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,7 @@ const NavBar = () => {
           <li className="nav__item" key={index}>
             <Link
               className="nav__link"
-              to="/department"
+              to={`/department/${page}`}
               onClick={() => {
                 setIsOpen(false);
               }}

@@ -1,21 +1,24 @@
-import { ConnectedTvOutlined } from '@mui/icons-material';
 import { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import { client } from '../client';
 import Products from '../components/Products/Products';
 
 const Department = () => {
 
   const [ category, setDepartmentProducts ] = useState()
-  const department = "Kids";
+
+  const { id } = useParams()
 
    useEffect(() => {
      client
        .fetch(
-         `*[_type == "product" && department == "${department}"]{
+         `*[_type == "product" && department == "${id}"]{
             image,
             department,
             title,
-            slug,
+            slug{
+              current,
+            },
             price,
             details,
             rating
@@ -23,19 +26,16 @@ const Department = () => {
        )
        .then((data) => {
          setDepartmentProducts(data);
-         console.log(data);
        })
        .catch((error) => console.log(error.message));
-   }, []);
-
-
-  console.log(category)
+   }, [id]);
 
   return(
     <div className="department">
-      <Products />
+      <Products products={category}/>
     </div>
   )
 }
+
 
 export default Department;

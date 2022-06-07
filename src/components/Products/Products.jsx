@@ -2,9 +2,8 @@ import * as React from "react";
 import Product from './Product';
 import './products.css';
 import Grid from "@mui/material/Grid";
-//import { IndeterminateCheckBox } from "@mui/icons-material";
 
-const Products = ({items}) => {
+const Products = ({products}) => {
 
   return (
     <div className="products__grid">
@@ -13,11 +12,11 @@ const Products = ({items}) => {
         direction="row-reverse"
         justifyContent="center"
         alignItems="center"
-        spacing={2}
+        spacing={4}
       >
-        {/* {items.map((item) => (
+        {products?.map((item, index) => (
           <Grid
-            key={item.id}
+            key={index}
             item
             xs={10}
             sm={6}
@@ -26,7 +25,7 @@ const Products = ({items}) => {
           >
             <Product item={item} />
           </Grid>
-        ))} */}
+        ))}  
       </Grid>
     </div>
   );

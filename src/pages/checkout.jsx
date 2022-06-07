@@ -13,6 +13,7 @@ const Checkout = () => {
   const dispatch = useDispatch();
 
   console.log(items)
+  console.log(cart)
   
   useEffect(() => {
     dispatch(getTotal());

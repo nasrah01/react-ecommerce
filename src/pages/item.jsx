@@ -1,37 +1,46 @@
-// import { useSelector, useDispatch } from "react-redux";
-// import CurrencyFormat from "react-currency-format";
-// import { addToCart } from "../redux/reducers/cart";
-// import { selectedItem } from '../redux/reducers/items';
-// import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import { Grid, Card, CardMedia } from "@mui/material";
-// import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import CurrencyFormat from "react-currency-format";
+import { addToCart } from "../redux/reducers/cart";
+//import { createTheme, ThemeProvider } from "@mui/material/styles";
+//import { Grid, Card, CardMedia } from "@mui/material";
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { client } from "../client";
+import { urlFor } from "../client";
 
 const Item = () => {
+  const [ itemDetails, setItemDetails ] = useState(null)
+  const [ hasItem, setHasItem ] = useState(false)
+  const { slug } = useParams();
 
-  /* const itemSelection = useSelector((state) => state.products.item);
-  const allItems = useSelector((state) => state.products.items);
+   useEffect(() => {
+     client
+       .fetch(
+         `*[_type == "product" && slug.current == "${slug}"]{
+            image,
+            department,
+            title,
+            price,
+            details,
+            rating
+        }`
+       )
+       .then((data) => {
+         setItemDetails(data[0])
+         setHasItem(true)
+       })
+       .catch((error) => console.log(error.message));
+   }, [slug]);
+
   const dispatch = useDispatch();
 
-  console.log(itemSelection);
-  console.log(allItems);
-
-  const {id, image, category, title, description, price, rating} = itemSelection;
-
-  const ratings = Math.round(rating.rate); */
-
- /*   const addItemToCart = () => {
-     const product = {
-       id,
-       image,
-       category,
-       title,
-       description,
-       price,
-     };
-     dispatch(addToCart(product));
+  const addItemToCart = () => {
+    
+     dispatch(addToCart(itemDetails));
    };
 
-     const theme = createTheme({
+/*      const theme = createTheme({
        components: {
          MuiCardMedia: {
            styleOverrides: {
@@ -41,45 +50,53 @@ const Item = () => {
            },
          },
        },
-     }); */
-
-   /* const suggestions = allItems.filter((items) => items.category === itemSelection.category).slice(0, 5);
-   console.log(suggestions) */
+     });  */
 
   return (
     <div className="item__container">
-      <div className="item">
-        {/* <div className="item__image">
-          <img src={image} alt={category} />
-        </div>
-        <div className="item__description">
-          <p className="item__department">{category.toUpperCase()}</p>
-          <h2 className="item__title">{title}</h2>
-          <div>
-            {[...Array(ratings)].map((star, index) => {
-              index += 1;
-              return <span className="item__star" key={index}>&#9733;</span>;
-            })}
+      {hasItem && (
+        <div className="item">
+          <div className="item__image">
+            <img src={urlFor(itemDetails.image[0])} alt={itemDetails.title} />
           </div>
-          <CurrencyFormat className="item__price" value={price.toFixed(2)} prefix={"£"} displayType={"text"} />
-          <div className="item__details">
-            <h3>Product details</h3>
-            <p>{description}</p>
-          </div>
-          <div className='item__checkout--btn'>
-              <button onClick={addItemToCart} className='btn btn-1'>
+          <div className="item__description">
+            <p className="item__department">
+              {itemDetails.department.toUpperCase()}
+            </p>
+            <h2 className="item__title">{itemDetails.title}</h2>
+            <div>
+              {[...Array(itemDetails.rating)].map((star, index) => {
+                index += 1;
+                return (
+                  <span className="item__star" key={index}>
+                    &#9733;
+                  </span>
+                );
+              })}
+            </div>
+            <CurrencyFormat
+              className="item__price"
+              value={itemDetails.price}
+              prefix={"£"}
+              displayType={"text"}
+            />
+            <div className="item__details">
+              <h3>Product details</h3>
+              <p>{itemDetails.details}</p>
+            </div>
+            <div className="item__checkout--btn">
+              <button onClick={addItemToCart} className="btn btn-1">
                 Add to basket
               </button>
               <Link to="/checkout" style={{ textDecoration: "none" }}>
-                <button className='btn btn-2'>
-                  checkout
-                </button>
+                <button className="btn btn-2">checkout</button>
               </Link>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      <div className="suggestions__sx">
+      {/* <div className="suggestions__sx">
         <h3>You may also like</h3>
         <Grid container justifyContent="center" spacing={5}>
             {suggestions.map((item) => ( 
@@ -93,8 +110,8 @@ const Item = () => {
                 </Card> 
               </Grid>
             ))}
-        </Grid> */}
-      </div>
+        </Grid> 
+      </div>*/}
     </div>
   );
 };

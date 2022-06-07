@@ -1,10 +1,8 @@
 import { useDispatch } from "react-redux";
-import {
-  removeFromCart,
-  addToCart,
-  decreaseCartQuantity
+import { removeFromCart, addToCart, decreaseCartQuantity
 } from "../../redux/reducers/cart";
 import CurrencyFormat from "react-currency-format";
+import { urlFor } from "../../client";
 
 const CartItems = ({ id, title, image, price, cartQuantity }) => {
 
@@ -28,7 +26,7 @@ const CartItems = ({ id, title, image, price, cartQuantity }) => {
     <div className="checkout__item">
       <div className="checkout__item--flex">
         <div className="checkout__item--image">
-          <img src={image} alt="cart item" height={400} width={400} />
+          <img src={urlFor(image[0])} alt="cart item" height={400} width={400} />
         </div>
         <div className="checkout__item--info">
           <h3>{title}</h3>
