@@ -11,9 +11,6 @@ const Checkout = () => {
   const items = useSelector(selectItems);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
-  console.log(items)
-  console.log(cart)
   
   useEffect(() => {
     dispatch(getTotal());
@@ -72,7 +69,7 @@ const Checkout = () => {
               <h2>Summary</h2>
               <div className="checkout__summary--total">
                 <div className="checkout__summary--flex">
-                  <div className="checkout__summary--title">Total</div>
+                  <div className="checkout__summary--header">Total</div>
                   <div className="checkout__summary--value">
                     <CurrencyFormat
                       value={cart.cartTotalAmount.toFixed(2)}

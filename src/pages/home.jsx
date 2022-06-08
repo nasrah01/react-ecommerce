@@ -24,8 +24,6 @@ const Home = () => {
         })
         .catch((error) => console.log(error.message));
     }, [])
-    
-    console.log(products)
 
   return (
     <div>

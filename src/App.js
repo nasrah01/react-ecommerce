@@ -27,7 +27,7 @@ function App() {
           <Route path="/department/:id" element={<Department />} />
           <Route path="/item/:slug" element={<Item />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/search" element={<SearchResults />} />
+          <Route path="/search/:term" element={<SearchResults />} />
         </Routes>
         </ScrollToTop>
         <Footer />

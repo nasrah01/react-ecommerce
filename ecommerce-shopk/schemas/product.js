@@ -28,7 +28,7 @@ export default {
       type: "slug",
       options: {
         source: "title",
-        maxLength: 200, 
+        maxLength: 200,
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
@@ -47,6 +47,12 @@ export default {
       name: "rating",
       title: "Rating",
       type: "number",
+    },
+    {
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [{type: "string"}]
     },
   ],
 };
