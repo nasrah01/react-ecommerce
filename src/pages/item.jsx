@@ -18,6 +18,7 @@ const Item = () => {
      client
        .fetch(
          `*[_type == "product" && slug.current == "${slug}"]{
+            _id,
             image,
             department,
             title,
@@ -36,10 +37,13 @@ const Item = () => {
   const dispatch = useDispatch();
 
   const addItemToCart = () => {
-    
+
+    itemDetails['id'] = itemDetails._id;
+
      dispatch(addToCart(itemDetails));
    };
 
+   console.log(itemDetails)
 /*      const theme = createTheme({
        components: {
          MuiCardMedia: {

@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 
 const SearchResult = () => {
   const [ itemResults, setResponse ] = useState([])
-  const [ isFound, setIsFound ] = useState(false)
+  const [ isLoaded, setIsLoaded ] = useState(false)
 
   const { term } = useParams()
   
@@ -15,6 +15,7 @@ const SearchResult = () => {
     client
       .fetch(
         `*[_type == "product" && tags match "${term}"]{
+            _id,
             image,
             department,
             title,
@@ -27,9 +28,8 @@ const SearchResult = () => {
         }`
       )
       .then((data) => {
-        console.log(data[0]);
         setResponse(data)
-        setIsFound(true)
+        setIsLoaded(true)
       })
       .catch((error) => console.log(error.message));
   }, [term]);
@@ -37,11 +37,15 @@ const SearchResult = () => {
   return (
     <div className="search__results">
       <h2>Search results</h2>
-      {isFound && itemResults.length > 0 ? <Products products={itemResults} /> :  
-      <div className="search__error">
-        <h3>Oops nothing found! <br /> try again</h3>
-        <FcSearch size={64}/>
-      </div>}
+      {isLoaded && itemResults.length === 0 ? (
+        <div className="search__error">
+          <h3>Oops nothing found! <br /> try again</h3>
+          <FcSearch size={64}/>
+      </div>
+      ) :
+      ( 
+       <Products products={itemResults} /> 
+      )}
     </div>
   );
 };

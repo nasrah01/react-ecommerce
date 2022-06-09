@@ -1,16 +1,17 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import CartItems  from '../components/Cart/CartItems';
-import {selectItems, getTotal} from '../redux/reducers/cart';
+import {selectedItems, getTotal} from '../redux/reducers/cart';
 import CurrencyFormat from "react-currency-format";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { HiOutlineInformationCircle } from 'react-icons/hi'
 
 const Checkout = () => {
-  const items = useSelector(selectItems);
+  const items = useSelector(selectedItems);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  console.log(items)
   
   useEffect(() => {
     dispatch(getTotal());
@@ -46,12 +47,10 @@ const Checkout = () => {
           <div className="checkout__items">
             <div className="checkout__items--header">
               <h2>Your secure bag</h2>
-              <div className="checkout__quantities">
-                <p className="pd">Qty</p>
-                <p className="pd">Subtotal</p>
-              </div>
+              <p className="pd">Qty</p>
+              <p className="pd">Subtotal</p>
             </div>
-            <div>
+            <div className="checkout__item">
               {items.map((item, i) => (
                 <CartItems
                   key={i}
@@ -65,25 +64,37 @@ const Checkout = () => {
             </div>
           </div>
           <div className="checkout__summary">
+
+
             <div className="checkout__summary--container">
               <h2>Summary</h2>
-              <div className="checkout__summary--total">
-                <div className="checkout__summary--flex">
-                  <div className="checkout__summary--header">Total</div>
-                  <div className="checkout__summary--value">
+
+
+
+                <div className="checkout__summary--details">
+                  <p className='pd'>Total</p>
+                  <div>
                     <CurrencyFormat
                       value={cart.cartTotalAmount.toFixed(2)}
                       prefix={"£"}
                       displayType={"text"}
+                      style={{ fontSize: '1.5rem'}}
                     />
                   </div>
                 </div>
+
+
                 <div className="checkout__summary--btn">
                   <button className="btn btn-2">checkout</button>
                 </div>
-              </div>
+
+
             </div>
+
+
           </div>
+
+
         </div>
       )}
     </div>

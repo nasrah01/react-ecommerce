@@ -13,6 +13,7 @@ const Department = () => {
      client
        .fetch(
          `*[_type == "product" && department == "${id}"]{
+           _id,
             image,
             department,
             title,
