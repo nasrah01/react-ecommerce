@@ -116,7 +116,7 @@
 }
 
 .item__image img {
-  width: 50%;
+  width: 90%;
   height: auto;
   display: block;
 }
@@ -176,12 +176,6 @@
   font-size: 2rem;
 }
 
-@media screen and (max-width: 1400px) {
-  .item__image img {
-    width: 70%;
-  }
-}
-
 @media screen and (max-width: 1000px) {
   .item {
     flex-direction: column;
@@ -193,6 +187,10 @@
 
   .item__image {
     margin-bottom: 4rem;
+  }
+
+  .item__image img {
+    width: 100%;
   }
 }
 

@@ -3,7 +3,7 @@ import { useState} from 'react'
 import { CgMenuRight, CgClose } from 'react-icons/cg'
 
 
-const pages = ["womenswear", "menswear", "kids", "technology"];
+const pages = ["womenswear", "menswear", "kids", "technology", "horticulture"];
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
