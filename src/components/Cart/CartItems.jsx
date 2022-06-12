@@ -4,7 +4,7 @@ import { removeFromCart, addToCart, decreaseCartQuantity
 import CurrencyFormat from "react-currency-format";
 import { urlFor } from "../../client";
 
-const CartItems = ({ id, title, image, price, cartQuantity }) => {
+const CartItems = ({ id, title, image, size, price, cartQuantity }) => {
 
   const dispatch = useDispatch();
 
@@ -36,6 +36,9 @@ const CartItems = ({ id, title, image, price, cartQuantity }) => {
         <div className="checkout__item--info">
           <div>
             <h3>{title}</h3>
+            {
+              size && <p>Size: {size}</p>
+            }
             <CurrencyFormat
               value={price.toFixed(2)}
               prefix={"£"}

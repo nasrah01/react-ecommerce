@@ -10,7 +10,6 @@ const SearchBar = () => {
   const handleSearchFilter = (e) => {
     e.preventDefault();
     navigate(`/search/${filterSearch}`, { replace: true });
-    setFilterSearch('');
   }
 
   return (

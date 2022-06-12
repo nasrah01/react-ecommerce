@@ -58,6 +58,7 @@ const Checkout = () => {
                   image={item.image}
                   title={item.title}
                   price={item.price}
+                  size={item.size}
                   cartQuantity={item.cartQuantity}
                 />
               ))}

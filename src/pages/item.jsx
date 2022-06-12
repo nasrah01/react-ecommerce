@@ -1,8 +1,6 @@
 import { useDispatch } from "react-redux";
 import CurrencyFormat from "react-currency-format";
 import { addToCart } from "../redux/reducers/cart";
-//import { createTheme, ThemeProvider } from "@mui/material/styles";
-//import { Grid, Card, CardMedia } from "@mui/material";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -12,6 +10,7 @@ import { urlFor } from "../client";
 const Item = () => {
   const [ itemDetails, setItemDetails ] = useState(null)
   const [ hasItem, setHasItem ] = useState(false)
+  const [ selectedSize, setSize ] = useState(null)
   const { slug } = useParams();
 
    useEffect(() => {
@@ -24,7 +23,8 @@ const Item = () => {
             title,
             price,
             details,
-            rating
+            rating,
+            sizes
         }`
        )
        .then((data) => {
@@ -39,22 +39,16 @@ const Item = () => {
   const addItemToCart = () => {
 
     itemDetails['id'] = itemDetails._id;
+    itemDetails['size'] = selectedSize;
 
      dispatch(addToCart(itemDetails));
    };
 
    console.log(itemDetails)
-/*      const theme = createTheme({
-       components: {
-         MuiCardMedia: {
-           styleOverrides: {
-             root: {
-               objectFit: "scale-down",
-             },
-           },
-         },
-       },
-     });  */
+
+   const handleChange = (e) => {
+     setSize(e.target.value)
+   }
 
   return (
     <div className="item__container">
@@ -84,6 +78,16 @@ const Item = () => {
               prefix={"£"}
               displayType={"text"}
             />
+            {itemDetails.sizes && (
+              <div className="item__sizing">
+                <select name="size" id="sizes" required onChange={handleChange}>
+                  <option value="">Select Size</option>
+                  {itemDetails.sizes.map((item) => (
+                    <option value={item}>{item}</option>
+                  ))}
+                </select>
+              </div>
+            )}
             <div className="item__details">
               <h3>Product details</h3>
               <p>{itemDetails.details}</p>
@@ -99,23 +103,6 @@ const Item = () => {
           </div>
         </div>
       )}
-
-      {/* <div className="suggestions__sx">
-        <h3>You may also like</h3>
-        <Grid container justifyContent="center" spacing={5}>
-            {suggestions.map((item) => ( 
-              <Grid item width={250}>
-                <Card sx={{ border: 0, boxShadow: 1, borderRadius: 1, p: 2}}  onClick={() => dispatch(selectedItem(item))}>
-                  <Link to="/item" style={{ textDecoration: "none" }} key={item.id}>
-                    <ThemeProvider theme={theme}>
-                      <CardMedia component="img" height="250" image={item.image} alt={item.catagory} />
-                    </ThemeProvider>
-                  </Link>
-                </Card> 
-              </Grid>
-            ))}
-        </Grid> 
-      </div>*/}
     </div>
   );
 };

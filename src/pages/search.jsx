@@ -36,7 +36,7 @@ const SearchResult = () => {
 
   return (
     <div className="search__results">
-      <h2>Search results</h2>
+      <h2>Search results for <span className="search__results--term">{term}</span></h2>
       {isLoaded && itemResults.length === 0 ? (
         <div className="search__error">
           <h3>Oops nothing found! <br /> try again</h3>

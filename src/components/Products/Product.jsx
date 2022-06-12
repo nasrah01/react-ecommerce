@@ -26,7 +26,7 @@ const Product = ({ item }) => {
       <Card sx={{ border: 0, boxShadow: 1, borderRadius: 1 }} variant="outlined">
         <Link to={`/item/${item.slug.current}`} style={{ textDecoration: "none" }}>
         <ThemeProvider theme={theme}>
-          <CardMedia component="img" height="290" image={urlFor(item.image[0])} alt="apparel"/>
+          <CardMedia component="img" height="290" image={urlFor(item.image[0])} alt={item.title}/>
         </ThemeProvider>
         <CardContent>
           <Typography gutterBottom variant="body2" color="text.primary" component="div" sx={{ fontSize: 16 }}>
