@@ -30,20 +30,29 @@ const Header = () => {
         <SearchBar />
         <div className="header__cart">
           <div>
-            <p className="signin">Sign in</p>
-            <div className="signin__responsive icon"><VscSignIn /></div>
+            <Link
+              to="/login"
+              style={{ textDecoration: "none", color: "#000" }}
+            >
+              <p className="signin">Sign in</p>
+              <div className="signin__responsive icon">
+                <VscSignIn />
+              </div>
+            </Link>
           </div>
           <Link
             to="/checkout"
             style={{ textDecoration: "none", color: "#000" }}
           >
             <div className="cart">
-              <div className="icon"><BsHandbag /></div>
-              {
-                cartTotal > 0 && (
-                <div className="cart__quantity"><span>{cartTotal}</span></div>
-                )
-              }
+              <div className="icon">
+                <BsHandbag />
+              </div>
+              {cartTotal > 0 && (
+                <div className="cart__quantity">
+                  <span>{cartTotal}</span>
+                </div>
+              )}
             </div>
           </Link>
         </div>

@@ -507,3 +507,86 @@
     padding-top: 2rem;
   }
 }
+
+/* login page */
+
+.login__container {
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+}
+
+.login__header h2 {
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+
+form {
+  margin-top: 2rem;
+}
+
+form div > * {
+  font-size: 1.5rem;
+}
+
+.form__container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+}
+
+.form__container label {
+  padding-bottom: .5rem;
+}
+
+.form__container input {
+  width: 450px;
+  padding: .75rem 1rem;
+  border-radius: 0;
+  border: 1px solid #bfbfbf;
+}
+
+.form__container input:focus {
+  background: #f2f2f2;
+  outline: none;
+}
+
+.submit__btn {
+  padding: 2rem 0;
+}
+
+.submit__btn button {
+ background-color: #1e90ff;
+ color: #fff;
+ border: none;
+ width: 450px;
+ padding: .9rem 1rem;
+}
+
+.submit__btn button:hover {
+  background-color: #0066cc;
+}
+
+.login__switch {
+  font-size: 1.8rem;
+}
+
+.login__switch span {
+  font-size: 1.8rem;
+  padding-left: .5rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: .5s ease;
+}
+
+.login__switch span:hover {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+
+  .form__container input, .submit__btn button {
+    width: 95vw;
+  }
+}

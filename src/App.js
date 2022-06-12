@@ -8,6 +8,7 @@ import Department from "./pages/department";
 import Item from './pages/item';
 import Checkout from "./pages/checkout";
 import SearchResults from './pages/search';
+import Login from './pages/login'
 import ScrollToTop from "./components/ScrollToTop";
 import { SearchContext } from "./context/SearchContext";
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/item/:slug" element={<Item />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/search/:term" element={<SearchResults />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         </ScrollToTop>
         <Footer />

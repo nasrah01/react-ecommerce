@@ -44,8 +44,6 @@ const Item = () => {
      dispatch(addToCart(itemDetails));
    };
 
-   console.log(itemDetails)
-
    const handleChange = (e) => {
      setSize(e.target.value)
    }
