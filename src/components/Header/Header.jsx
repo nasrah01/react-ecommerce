@@ -29,17 +29,17 @@ const Header = () => {
         </div>
         <SearchBar />
         <div className="header__cart">
+          <Link
+            to="/login"
+            style={{ textDecoration: "none", color: "#000" }}
+          >
           <div>
-            <Link
-              to="/login"
-              style={{ textDecoration: "none", color: "#000" }}
-            >
-              <p className="signin">Sign in</p>
-              <div className="signin__responsive icon">
-                <VscSignIn />
-              </div>
-            </Link>
+            <p className="signin">Sign in</p>
+            <div className="signin__responsive icon">
+              <VscSignIn />
+            </div> 
           </div>
+          </Link>
           <Link
             to="/checkout"
             style={{ textDecoration: "none", color: "#000" }}

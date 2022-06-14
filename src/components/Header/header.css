@@ -56,6 +56,10 @@
   color: white;
 }
 
+.signin {
+  margin-right: 1rem !important;
+}
+
 .signin__responsive {
   display: none;
 }
