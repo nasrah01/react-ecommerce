@@ -1,9 +1,19 @@
 import { useState } from 'react'
 import { CgArrowLongRight } from 'react-icons/cg'
 
+const initialState = {
+  forename: "",
+  surname: "",
+  email: "",
+  username: "",
+  password: ""
+}
+
 const Login = () => {
 
-  const [isSignup, setSignup] = useState(false)
+  const [ isSignup, setSignup ] = useState(false)
+  const [ user, setUser ] = useState(initialState)
+  const [isFormComplete, setCompleteForm] = useState(false)
 
    const switchMode = () => {
      setSignup((prevIsSignup) => !prevIsSignup);
@@ -23,8 +33,9 @@ const Login = () => {
           {isSignup && (
             <>
               <div className="form__container">
-                <label>First Name</label>
+                <label htmlFor="forename">First Name</label>
                 <input
+                  name="forename"
                   type="text"
                   placeholder="Please enter firstname"
                   aria-label="first name"
@@ -32,19 +43,31 @@ const Login = () => {
                 />
               </div>
               <div className="form__container">
-                <label>Last Name</label>
+                <label htmlFor="surname">Last Name</label>
                 <input
+                  name="surname"
                   type="text"
                   placeholder="Please enter surname"
                   aria-label="surname name"
                   aria-required="true"
                 />
               </div>
+              <div className="form__container">
+                <label htmlFor="email">Email</label>
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Enter your Email"
+                  aria-label="email"
+                  aria-required="true"
+                />
+              </div>
             </>
           )}
           <div className="form__container">
-            <label>Username</label>
+            <label htmlFor="username">Username</label>
             <input
+              name="username"
               type="text"
               placeholder="Enter your username"
               aria-label="username"
@@ -52,8 +75,9 @@ const Login = () => {
             />
           </div>
           <div className="form__container">
-            <label>Password</label>
+            <label htmlFor="password">Password</label>
             <input
+              name="password"
               type="text"
               placeholder="Enter your password"
               aria-label="password"
@@ -62,8 +86,9 @@ const Login = () => {
           </div>
           {isSignup && (
             <div className="form__container">
-              <label>Confirm Password</label>
+              <label htmlFor="confirmPassword">Confirm Password</label>
               <input
+                name="confirmPassword"
                 type="text"
                 placeholder="Please confirm password"
                 aria-label="confirm password"
