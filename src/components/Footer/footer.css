@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 0;
   margin: 0 190px;
   border-bottom: 1px solid #f2f2f2;
