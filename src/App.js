@@ -8,7 +8,8 @@ import Department from "./pages/department";
 import Item from './pages/item';
 import Checkout from "./pages/checkout";
 import SearchResults from './pages/search';
-import Signin from './pages/signin'
+import Login from './pages/login'
+import Register from './pages/register'
 import ScrollToTop from "./components/ScrollToTop";
 import { SearchContext } from "./context/SearchContext";
 
@@ -20,20 +21,21 @@ function App() {
   return (
     <div className="App">
       <SearchContext.Provider value={departmentValue}>
-      <BrowserRouter>
-        <Header />
-        <ScrollToTop>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/department/:id" element={<Department />} />
-          <Route path="/item/:slug" element={<Item />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/search/:term" element={<SearchResults />} />
-          <Route path="/signin" element={<Signin />} />
-        </Routes>
-        </ScrollToTop>
-        <Footer />
-      </BrowserRouter>
+        <BrowserRouter>
+          <Header />
+          <ScrollToTop>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/department/:id" element={<Department />} />
+              <Route path="/item/:slug" element={<Item />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/search/:term" element={<SearchResults />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </ScrollToTop>
+          <Footer />
+        </BrowserRouter>
       </SearchContext.Provider>
     </div>
   );

@@ -86,7 +86,9 @@ const Checkout = () => {
 
 
                 <div className="checkout__summary--btn">
+                  <Link to="/login" style={{ textDecoration: "none" }}>
                   <button className="btn btn-2">checkout</button>
+                  </Link>
                 </div>
 
 

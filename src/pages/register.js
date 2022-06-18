@@ -1,25 +1,26 @@
 import { useState, useEffect, useRef } from "react";
 import { CgArrowLongRight } from "react-icons/cg";
+import { FcHighPriority } from 'react-icons/fc'
+import { inputValidation } from "../validation/formValidate";
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const initialState = {
   forename: "",
   surname: "",
-  email: "",
   username: "",
   password: "",
+  confirmPassword: ""
 };
 
-const nameRegex = /^[a-zA-Z][a-zA-Z0-9-_]{3,20}$/
-const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/
-
 const Register = () => {
-  const [isValid, setIsValid] = useState(false)
   const [register, setRegisterUser] = useState(initialState)
+  // eslint-disable-next-line no-unused-vars
   const [inputFocus, setInputFocus] = useState(false)
+  const [formSubmission, setFormSubmit] = useState(false)
   const [error, setError] = useState({})
-  const [isRegister, setRegister] = useState(false)
   const userRef = useRef()
-  const errRef = useRef()
+  const navigate = useNavigate()
 
   useEffect(() => {
     userRef.current.focus()
@@ -31,9 +32,16 @@ const Register = () => {
    };
 
   const formSubmit = (e) => {
-    setRegister(true)
-    setIsValid(true)
     e.preventDefault();
+    setFormSubmit(true)
+    setError(inputValidation(register))
+
+    if(formSubmission && Object.keys(error).length === 0) {
+      console.log('object is empty')
+      navigate('/')
+    }
+    console.log(error)
+    console.log(formSubmission)
   };
 
   return (
@@ -51,38 +59,44 @@ const Register = () => {
               placeholder="Please enter firstname"
               aria-label="first name"
               aria-required="true"
+              className={error?.forename ? "form__input--error" : "form__input"}
+              value={register.forename}
               onChange={handleChange}
               ref={userRef}
               autoComplete="off"
               onFocus={() => setInputFocus(true)}
               onBlur={() => setInputFocus(false)}
             />
+            <div className="form__error">
+              {error?.forename && (
+                <>
+                  <FcHighPriority size={16} />
+                  <p>{error.forename}</p>
+                </>
+              )}
+            </div>
           </div>
           <div className="form__container">
             <label htmlFor="surname">Last Name</label>
             <input
               name="surname"
               type="text"
-              placeholder="Please enter surname"
+              placeholder="Enter your surname"
               aria-label="surname name"
               aria-required="true"
+              className={error?.surname ? "form__input--error" : "form__input"}
+              value={register.surname}
               onChange={handleChange}
-              ref={userRef}
               autoComplete="off"
             />
-          </div>
-          <div className="form__container">
-            <label htmlFor="email">Email</label>
-            <input
-              name="email"
-              type="email"
-              placeholder="Enter your Email"
-              aria-label="email"
-              aria-required="true"
-              onChange={handleChange}
-              ref={userRef}
-              autoComplete="off"
-            />
+            <div className="form__error">
+              {error?.surname && (
+                <>
+                  <FcHighPriority size={16} />
+                  <p>{error.surname}</p>
+                </>
+              )}
+            </div>
           </div>
           <div className="form__container">
             <label htmlFor="username">Username</label>
@@ -92,10 +106,19 @@ const Register = () => {
               placeholder="Enter your username"
               aria-label="username"
               aria-required="true"
+              className={error?.username ? "form__input--error" : "form__input"}
+              value={register.username}
               onChange={handleChange}
-              ref={userRef}
               autoComplete="off"
             />
+            <div className="form__error">
+              {error?.username && (
+                <>
+                  <FcHighPriority size={16} />
+                  <p>{error.username}</p>
+                </>
+              )}
+            </div>
           </div>
           <div className="form__container">
             <label htmlFor="password">Password</label>
@@ -105,8 +128,18 @@ const Register = () => {
               placeholder="Enter your password"
               aria-label="password"
               aria-required="true"
+              className={error?.password ? "form__input--error" : "form__input"}
+              value={register.password}
               onChange={handleChange}
             />
+            <div className="form__error">
+              {error?.password && (
+                <>
+                  <FcHighPriority size={16} />
+                  <p>{error.password}</p>
+                </>
+              )}
+            </div>
           </div>
           <div className="form__container">
             <label htmlFor="confirmPassword">Confirm Password</label>
@@ -116,8 +149,20 @@ const Register = () => {
               placeholder="Please confirm password"
               aria-label="confirm password"
               aria-required="true"
+              className={
+                error?.confirmPassword ? "form__input--error" : "form__input"
+              }
+              value={register.confirmPassword}
               onChange={handleChange}
             />
+            <div className="form__error">
+              {error?.confirmPassword && (
+                <>
+                  <FcHighPriority size={16} />
+                  <p>{error.confirmPassword}</p>
+                </>
+              )}
+            </div>
           </div>
           <div className="submit__btn">
             <button>Register</button>
@@ -127,8 +172,10 @@ const Register = () => {
           <p className="login__switch">
             Already have an account?
             <span>
+            <Link to="/login" style={{ textDecoration: "none" }}>
               Sign In
               <CgArrowLongRight size={18} />
+            </Link>
             </span>
           </p>
         </div>

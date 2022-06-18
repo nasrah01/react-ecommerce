@@ -544,16 +544,25 @@ form div > * {
   width: 450px;
   padding: .75rem 1rem;
   border-radius: 0;
+}
+
+.form__input {
   border: 1px solid #bfbfbf;
 }
 
-.form__container input:focus {
+.form__input--error {
+  background-color: #fcdede;
+  border: none;
+  border-left: 5px solid #e03d3d;
+}
+
+.form__input:focus {
   background: #f2f2f2;
   outline: none;
 }
 
 .submit__btn {
-  padding: 2rem 0;
+  padding: 3rem 0;
 }
 
 .submit__btn button {
@@ -582,6 +591,17 @@ form div > * {
 
 .login__switch span:hover {
   text-decoration: none;
+}
+
+.form__error {
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+}
+
+.form__error p {
+  margin: 0;
+  padding-left: .5rem;
 }
 
 @media screen and (max-width: 500px) {
