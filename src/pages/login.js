@@ -1,18 +1,25 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { CgArrowLongRight } from "react-icons/cg";
 import { FcHighPriority } from "react-icons/fc";
 import { Link } from 'react-router-dom'
+import axios from '../api'
+import { useNavigate } from 'react-router-dom'
+import LoginContext from '../context/loginContext';
 
 const Login = () => {
   const [ error, setError ] = useState({});
+  const [authError, setAuthError] = useState()
+  const [success, setSuccess] = useState(false)
   const [user, setUser ] = useState({ username:'', password: ''})
+  const navigate = useNavigate()
+  const {loggedIn,setLoggedIn} = useContext(LoginContext)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
 
-  const formSubmit = (e) => {
+  const formSubmit = async (e) => {
     e.preventDefault();
 
 
@@ -25,20 +32,54 @@ const Login = () => {
       return
     }
 
-    if(Object.keys(error).length === 0) {
-      console.log('form can be sent')
+    const { username, password } = user
+
+    try {
+      const response = await axios.post(
+        "/auth/login",
+        { username, password },
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const accessToken = response?.data?.accessToken
+      if(response.status === 200) {
+        setLoggedIn({username, accessToken})
+        navigate('/payment')
+      }
+    } catch (error) {
+      if(!error.response) {
+        setAuthError('Network error, please try again later!')
+      } else if (error.response?.status === 400) {
+        setAuthError('Please fill in username and password')
+      } else if (error.response?.status === 401) {
+        setAuthError(error.response?.data?.msg);
+      } else {
+        setAuthError('Login failed')
+      }
     }
 
     setError({})
   };
 
-  return (
+  return success ? (
+    <div className='login__logged'><h2>Logged in</h2></div>
+  ) : (
     <div className="login__container">
       <div>
         <div className="login__header">
           <h2>Login</h2>
         </div>
         <form onSubmit={formSubmit}>
+           {authError && (
+          <div className="form__error">
+            <FcHighPriority size={16} />
+            <p>{authError}</p>
+          </div>
+        )}
           <div className="form__container">
             <label htmlFor="username">Username</label>
             <input
@@ -90,10 +131,10 @@ const Login = () => {
           <p className="login__switch">
             Don't have an account?
             <span>
-            <Link to="/register" style={{ textDecoration: "none" }}>
-              Register
-              <CgArrowLongRight size={18} />
-            </Link>
+              <Link to="/register" style={{ textDecoration: "none" }}>
+                Register
+                <CgArrowLongRight size={18} />
+              </Link>
             </span>
           </p>
         </div>

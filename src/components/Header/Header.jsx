@@ -1,6 +1,7 @@
 import NavBar from './Navigation/NavBar';
 import SearchBar from './SearchBar';
-import { useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import LoginContext from '../../context/loginContext';
 import { BsHandbag } from "react-icons/bs";
 import { VscSignIn } from "react-icons/vsc";
 import { Link } from 'react-router-dom';
@@ -13,6 +14,10 @@ const Header = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const cartTotal = cart.cartQuantityTotal;
+  const {loggedIn} = useContext(LoginContext)
+  console.log(loggedIn)
+  const [log, setlog] = useState(false)
+
 
   useEffect(() => {
     dispatch(getTotal());
@@ -29,17 +34,18 @@ const Header = () => {
         </div>
         <SearchBar />
         <div className="header__cart">
-          <Link
-            to="/login"
-            style={{ textDecoration: "none", color: "#000" }}
-          >
-          <div>
-            <p className="signin">Sign in</p>
-            <div className="signin__responsive icon">
-              <VscSignIn />
-            </div> 
-          </div>
-          </Link>
+          {loggedIn?.username ? (
+            <p className='signin'>{loggedIn.username}</p>
+          ) : (
+            <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
+              <div>
+                <p className="signin">Sign in</p>
+                <div className="signin__responsive icon">
+                  <VscSignIn />
+                </div>
+              </div>
+            </Link>
+          )}
           <Link
             to="/checkout"
             style={{ textDecoration: "none", color: "#000" }}

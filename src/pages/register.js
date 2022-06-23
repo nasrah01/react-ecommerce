@@ -4,6 +4,7 @@ import { FcHighPriority } from 'react-icons/fc'
 import { inputValidation } from "../validation/formValidate";
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import axios from '../api'
 
 const initialState = {
   forename: "",
@@ -17,7 +18,7 @@ const Register = () => {
   const [register, setRegisterUser] = useState(initialState)
   // eslint-disable-next-line no-unused-vars
   const [inputFocus, setInputFocus] = useState(false)
-  const [formSubmission, setFormSubmit] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState({})
   const userRef = useRef()
   const navigate = useNavigate()
@@ -26,23 +27,45 @@ const Register = () => {
     userRef.current.focus()
   }, [])
   
-   const handleChange = (e) => {
-     const { name, value } = e.target;
-     setRegisterUser({ ...register, [name]: value });
-   };
-
-  const formSubmit = (e) => {
-    e.preventDefault();
-    setFormSubmit(true)
-    setError(inputValidation(register))
-
-    if(formSubmission && Object.keys(error).length === 0) {
-      console.log('object is empty')
-      navigate('/')
-    }
-    console.log(error)
-    console.log(formSubmission)
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setRegisterUser({ ...register, [name]: value });
   };
+
+  const formSubmit = async (e) => {
+    e.preventDefault();
+    setError(inputValidation(register))
+    setIsSubmitted(true)
+  };
+
+  useEffect(() => {
+    if(Object.keys(error).length === 0 && isSubmitted) {
+      sendData();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error, isSubmitted])
+  
+
+  const sendData = async () => {
+    const { forename, surname, username, password} = register
+
+    try {
+      const response = await axios.post(
+        "/auth/register",
+        { forename, surname, username, password },
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if(response.status === 201) {
+        navigate('/login')
+      }
+    } catch (error) {
+     console.log(error.message)
+    }
+  }
 
   return (
     <div className="login__container">

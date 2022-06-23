@@ -604,6 +604,14 @@ form div > * {
   padding-left: .5rem;
 }
 
+.login__logged {
+  height: 100vh;
+}
+
+.login__logged h2 {
+  font-size: 18px;
+}
+
 @media screen and (max-width: 500px) {
 
   .login__container {
