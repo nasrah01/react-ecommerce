@@ -1,6 +1,6 @@
 import NavBar from './Navigation/NavBar';
 import SearchBar from './SearchBar';
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import LoginContext from '../../context/loginContext';
 import { BsHandbag } from "react-icons/bs";
 import { VscSignIn } from "react-icons/vsc";
@@ -16,7 +16,6 @@ const Header = () => {
   const cartTotal = cart.cartQuantityTotal;
   const {loggedIn} = useContext(LoginContext)
   console.log(loggedIn)
-  const [log, setlog] = useState(false)
 
 
   useEffect(() => {

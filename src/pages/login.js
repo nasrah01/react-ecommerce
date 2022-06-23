@@ -12,7 +12,7 @@ const Login = () => {
   const [success, setSuccess] = useState(false)
   const [user, setUser ] = useState({ username:'', password: ''})
   const navigate = useNavigate()
-  const {loggedIn,setLoggedIn} = useContext(LoginContext)
+  const {setLoggedIn} = useContext(LoginContext)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +49,7 @@ const Login = () => {
       if(response.status === 200) {
         setLoggedIn({username, accessToken})
         navigate('/payment')
+        setSuccess(true)
       }
     } catch (error) {
       if(!error.response) {
