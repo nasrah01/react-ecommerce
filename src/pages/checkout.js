@@ -6,12 +6,14 @@ import CurrencyFormat from "react-currency-format";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { HiOutlineInformationCircle } from 'react-icons/hi'
+import useAuth from '../hooks/useAuth';
 
 const Checkout = () => {
   const items = useSelector(selectedItems);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(items)
+  const {loggedIn} = useAuth()
+  const path = loggedIn?.username ? '/payment' : '/login'
   
   useEffect(() => {
     dispatch(getTotal());
@@ -86,7 +88,7 @@ const Checkout = () => {
 
 
                 <div className="checkout__summary--btn">
-                  <Link to="/login" style={{ textDecoration: "none" }}>
+                  <Link to={path} style={{ textDecoration: "none" }}>
                   <button className="btn btn-2">checkout</button>
                   </Link>
                 </div>

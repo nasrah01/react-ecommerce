@@ -1,22 +1,20 @@
 import NavBar from './Navigation/NavBar';
 import SearchBar from './SearchBar';
-import { useEffect, useContext } from "react";
-import LoginContext from '../../context/loginContext';
+import { useEffect } from "react";
 import { BsHandbag } from "react-icons/bs";
 import { VscSignIn } from "react-icons/vsc";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotal } from '../../redux/reducers/cart';
 import './header.css';
+import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
 
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const cartTotal = cart.cartQuantityTotal;
-  const {loggedIn} = useContext(LoginContext)
-  console.log(loggedIn)
-
+  const {loggedIn} = useAuth()
 
   useEffect(() => {
     dispatch(getTotal());

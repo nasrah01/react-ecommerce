@@ -1,8 +1,13 @@
-import React from 'react'
+import UseRefreshToken from "../hooks/refreshToken"
 
 function payment() {
+
+  const refresh = UseRefreshToken()
   return (
-    <h2>payment</h2>
+    <div>
+      <h2>payment</h2>
+      <button onClick={() => refresh()}>refresh</button>
+    </div>
   )
 }
 

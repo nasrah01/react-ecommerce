@@ -1,18 +1,18 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { CgArrowLongRight } from "react-icons/cg";
 import { FcHighPriority } from "react-icons/fc";
-import { Link } from 'react-router-dom'
 import axios from '../api'
-import { useNavigate } from 'react-router-dom'
-import LoginContext from '../context/loginContext';
+import { useNavigate, Link, useLocation } from 'react-router-dom'
+import useAuth from '../hooks/useAuth';
 
 const Login = () => {
   const [ error, setError ] = useState({});
   const [authError, setAuthError] = useState()
-  const [success, setSuccess] = useState(false)
   const [user, setUser ] = useState({ username:'', password: ''})
   const navigate = useNavigate()
-  const {setLoggedIn} = useContext(LoginContext)
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+  const {setLoggedIn} = useAuth()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,6 +41,7 @@ const Login = () => {
         {
           header: {
             "Content-Type": "application/json",
+            withCredentials: true,
           },
         }
       );
@@ -48,8 +49,7 @@ const Login = () => {
       const accessToken = response?.data?.accessToken
       if(response.status === 200) {
         setLoggedIn({username, accessToken})
-        navigate('/payment')
-        setSuccess(true)
+        navigate(from, {replace: true})
       }
     } catch (error) {
       if(!error.response) {
@@ -66,9 +66,7 @@ const Login = () => {
     setError({})
   };
 
-  return success ? (
-    <div className='login__logged'><h2>Logged in</h2></div>
-  ) : (
+  return (
     <div className="login__container">
       <div>
         <div className="login__header">
