@@ -6,6 +6,7 @@ const UseRefreshToken = () => {
 
   const refresh = async () => {
     const response = await axios.get("/auth/refresh", {
+      headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });
     setLoggedIn((prev) => {

@@ -56,7 +56,7 @@
   color: white;
 }
 
-.signin {
+.signin, .sign__name {
   margin-right: 1rem !important;
 }
 

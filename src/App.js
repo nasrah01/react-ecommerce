@@ -12,6 +12,7 @@ import Login from './pages/login'
 import Register from './pages/register'
 import Payment from './pages/payment'
 import RequireAuth from "./components/Auth/RequireAuth";
+import PersistLoggin from "./components/Auth/PersistLoggin";
 import ScrollToTop from "./components/ScrollToTop";
 import { SearchContext } from "./context/SearchContext";
 import { LoginProvider} from './context/loginContext'
@@ -36,8 +37,10 @@ function App() {
                 <Route path="/search/:term" element={<SearchResults />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route element={<RequireAuth />} >
-                  <Route path="/payment" element={<Payment />} />
+                <Route element={<PersistLoggin />}>
+                  <Route element={<RequireAuth />} >
+                    <Route path="/payment" element={<Payment />} />
+                  </Route>
                 </Route>
                 <Route path="*" element={<Home />} />
               </Routes>

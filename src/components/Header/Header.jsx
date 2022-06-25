@@ -32,7 +32,7 @@ const Header = () => {
         <SearchBar />
         <div className="header__cart">
           {loggedIn?.username ? (
-            <p className='signin'>{loggedIn.username}</p>
+            <p className='signin__name'>{loggedIn.username}</p>
           ) : (
             <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
               <div>

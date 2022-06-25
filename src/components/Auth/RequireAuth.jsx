@@ -4,9 +4,10 @@ import useAuth from "../../hooks/useAuth";
 const RequireAuth = () => {
   const {loggedIn} = useAuth()
   const location = useLocation()
+  console.log(loggedIn)
 
   return (
-    loggedIn?.username ? <Outlet /> : <Navigate to='/login' state={{from: location}} replace={true} />
+    loggedIn?.accessToken ? <Outlet /> : <Navigate to='/login' state={{from: location}} replace={true} />
   )
 }
 

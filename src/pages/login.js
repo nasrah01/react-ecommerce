@@ -39,10 +39,8 @@ const Login = () => {
         "/auth/login",
         { username, password },
         {
-          header: {
-            "Content-Type": "application/json",
-            withCredentials: true,
-          },
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
         }
       );
 
