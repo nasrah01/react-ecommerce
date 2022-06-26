@@ -468,6 +468,10 @@
     line-height: 1.75;
   }
 }
+
+.checkout__sec {
+  min-height: 80vh;
+}
  
 /* search results */
 

@@ -20,6 +20,7 @@ const Register = () => {
   const [inputFocus, setInputFocus] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState({})
+  const [authError, setAuthError] = useState()
   const userRef = useRef()
   const navigate = useNavigate()
 
@@ -63,7 +64,13 @@ const Register = () => {
         navigate('/login')
       }
     } catch (error) {
-     console.log(error.message)
+      if(!error.response) {
+        setAuthError("Network error, please try again later!");
+      } else if (error.response?.status === 409) {
+        setAuthError(error.response?.data?.msg)
+      } else {
+        setAuthError("Registration failed");
+      }
     }
   }
 
@@ -74,6 +81,12 @@ const Register = () => {
           <h2>Register</h2>
         </div>
         <form onSubmit={formSubmit}>
+          {authError && (
+            <div className="form__error">
+              <FcHighPriority size={16} />
+              <p>{authError}</p>
+            </div>
+          )}
           <div className="form__container">
             <label htmlFor="forename">First Name</label>
             <input
@@ -195,10 +208,10 @@ const Register = () => {
           <p className="login__switch">
             Already have an account?
             <span>
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              Sign In
-              <CgArrowLongRight size={18} />
-            </Link>
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                Sign In
+                <CgArrowLongRight size={18} />
+              </Link>
             </span>
           </p>
         </div>

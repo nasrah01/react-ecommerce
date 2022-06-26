@@ -3,7 +3,7 @@
 function payment() {
 
   return (
-    <div>
+    <div className="checkout__sec">
       <h2>payment</h2>
     </div>
   )

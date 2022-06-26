@@ -3,11 +3,13 @@ import SearchBar from './SearchBar';
 import { useEffect } from "react";
 import { BsHandbag } from "react-icons/bs";
 import { VscSignIn } from "react-icons/vsc";
-import { Link } from 'react-router-dom';
+import { IoLogOutOutline } from 'react-icons/io5'
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotal } from '../../redux/reducers/cart';
 import './header.css';
 import useAuth from '../../hooks/useAuth';
+import UseLogout from '../../hooks/logout';
 
 const Header = () => {
 
@@ -15,10 +17,17 @@ const Header = () => {
   const dispatch = useDispatch();
   const cartTotal = cart.cartQuantityTotal;
   const {loggedIn} = useAuth()
+  const navigate = useNavigate()
+  const logout = UseLogout()
 
   useEffect(() => {
     dispatch(getTotal());
   }, [cart, dispatch]);
+
+  const handleLogout = async() => {
+    await logout()
+    navigate('/')
+  }
 
   return (
     <div className="header">
@@ -32,7 +41,15 @@ const Header = () => {
         <SearchBar />
         <div className="header__cart">
           {loggedIn?.username ? (
-            <p className='signin__name'>{loggedIn.username}</p>
+            <div className='dropdown'>
+              <p className='dropdown__btn'>{loggedIn.username}</p>
+              <div className='dropdown__content'>
+                <div className='dropdown__link' onClick={handleLogout}>
+                    <IoLogOutOutline size={16}/>
+                  <p>Logout</p>
+                </div>
+              </div>
+            </div>
           ) : (
             <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
               <div>

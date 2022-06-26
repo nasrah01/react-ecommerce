@@ -71,12 +71,12 @@ const Login = () => {
           <h2>Login</h2>
         </div>
         <form onSubmit={formSubmit}>
-           {authError && (
-          <div className="form__error">
-            <FcHighPriority size={16} />
-            <p>{authError}</p>
-          </div>
-        )}
+          {authError && (
+            <div className="form__error">
+              <FcHighPriority size={16} />
+              <p>{authError}</p>
+            </div>
+          )}
           <div className="form__container">
             <label htmlFor="username">Username</label>
             <input
