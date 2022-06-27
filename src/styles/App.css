@@ -147,6 +147,12 @@
   font-size: 1.5rem;
 }
 
+.item__size--error {
+  font-size: 1.6rem;
+  padding-top: 1rem;
+  color: #0066cc;
+}
+
 .item__details {
   padding: 1rem 0 1rem 0;
   border-top: 1px solid #f2f2f2;

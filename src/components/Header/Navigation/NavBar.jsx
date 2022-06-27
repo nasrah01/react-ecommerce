@@ -14,12 +14,23 @@ const NavBar = () => {
     <nav className="nav">
       <div className="nav__icons icon">
         {isOpen ? (
-          <CgClose color='#fff' onClick={() => setIsOpen(false)} />
+          <CgClose color="#fff" onClick={() => setIsOpen(false)} />
         ) : (
           <CgMenuRight onClick={() => setIsOpen(true)} />
         )}
       </div>
       <ul className={isOpen ? "nav__container" : "nav__container nav__hidden"}>
+        <li>
+          <Link
+            className="nav__link"
+            to="/"
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
+            Home
+          </Link>
+        </li>
         {pages.map((page, index) => (
           <li className="nav__item" key={index}>
             <Link

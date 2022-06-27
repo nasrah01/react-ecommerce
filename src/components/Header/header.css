@@ -30,7 +30,7 @@
 }
 
 .header__cart p {
-  font-size: clamp(1.4rem, 1.3vw, 1.8rem);
+  font-size: clamp(1.4rem, 1vw, 1.8rem);
   margin: 0;
   padding-right: .5rem;
 }

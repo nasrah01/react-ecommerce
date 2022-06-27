@@ -1,22 +1,23 @@
 import { useDispatch } from "react-redux";
 import CurrencyFormat from "react-currency-format";
 import { addToCart } from "../redux/reducers/cart";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { client } from "../client";
 import { urlFor } from "../client";
 
 const Item = () => {
-  const [ itemDetails, setItemDetails ] = useState(null)
-  const [ hasItem, setHasItem ] = useState(false)
-  const [ selectedSize, setSize ] = useState(null)
+  const [itemDetails, setItemDetails] = useState(null);
+  const [hasItem, setHasItem] = useState(false);
+  const [selectedSize, setSize] = useState('');
+  const [sizeError, setSizeError] = useState(null);
   const { slug } = useParams();
 
-   useEffect(() => {
-     client
-       .fetch(
-         `*[_type == "product" && slug.current == "${slug}"]{
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "product" && slug.current == "${slug}"]{
             _id,
             image,
             department,
@@ -26,27 +27,33 @@ const Item = () => {
             rating,
             sizes
         }`
-       )
-       .then((data) => {
-         setItemDetails(data[0])
-         setHasItem(true)
-       })
-       .catch((error) => console.log(error.message));
-   }, [slug]);
+      )
+      .then((data) => {
+        setItemDetails(data[0]);
+        setHasItem(true);
+      })
+      .catch((error) => console.log(error.message));
+  }, [slug]);
 
   const dispatch = useDispatch();
 
   const addItemToCart = () => {
+    if (itemDetails.sizes?.length > 0 && selectedSize === '') {
+      setSizeError("Please select a size");
+    } else {
+      itemDetails["id"] = itemDetails._id;
+      itemDetails["size"] = selectedSize;
 
-    itemDetails['id'] = itemDetails._id;
-    itemDetails['size'] = selectedSize;
+      dispatch(addToCart(itemDetails));
+    }
+  };
 
-     dispatch(addToCart(itemDetails));
-   };
+  const handleChange = (e) => {
+    setSizeError(null);
+    const sizeValue = e.target.value;
 
-   const handleChange = (e) => {
-     setSize(e.target.value)
-   }
+    setSize(sizeValue);
+  };
 
   return (
     <div className="item__container">
@@ -76,12 +83,15 @@ const Item = () => {
               prefix={"£"}
               displayType={"text"}
             />
+            {sizeError && <div className="item__size--error">{sizeError}</div>}
             {itemDetails.sizes && (
               <div className="item__sizing">
-                <select name="size" id="sizes" required onChange={handleChange}>
+                <select name="size" id="sizes" onChange={handleChange}>
                   <option value="">Select Size</option>
-                  {itemDetails.sizes.map((item) => (
-                    <option value={item}>{item}</option>
+                  {itemDetails.sizes.map((item, index) => (
+                    <option value={item} key={index}>
+                      {item}
+                    </option>
                   ))}
                 </select>
               </div>

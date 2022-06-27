@@ -39,7 +39,7 @@ const Checkout = () => {
             <p className="pd checkout__empty--content">
               Your bag needs filling
             </p>
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link to={-1} style={{ textDecoration: "none" }}>
               <button className="btn btn-2">Continue shopping</button>
             </Link>
           </div>
