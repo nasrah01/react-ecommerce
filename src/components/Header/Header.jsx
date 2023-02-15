@@ -34,7 +34,7 @@ const Header = () => {
       <div className="header__primary">
         <div className="header__logo">
           <Link to="/" style={{ textDecoration: "none", color: "#000" }}>
-            <h2>S&K</h2>
+            <h2>Ecomm</h2>
             <p>EST. 1992</p>
           </Link>
         </div>

@@ -8,7 +8,7 @@ export const sliderData = [
     id: 1,
     image: IMG1,
     alt: "womens inspiration",
-    title: "Anything but ordinary",
+    title: "The greatest venture that you can have",
     desc: "Shop new in",
   },
   {
